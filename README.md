@@ -1,8 +1,8 @@
-# RIDE-MY-WAY
+## RIDE-MY-WAY
 
 This is an application that allows user to request for a ride, and the driver accepts or rejects the request.
 
-#Features
+##Features
 
 1. ## Driver
      * sign up and login
