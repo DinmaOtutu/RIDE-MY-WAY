@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Ride My Way</title>
+</head>
+
+<body class="driver">
+  <div class="header">
+    <div class="navbar">
+      <div class="offer-control d-none-md">
+        <a href="#sidenav" class="d-none-md">
+          <img src="css/images/toggler.png" alt="toggler">
+        </a>
+      </div>
+      <div class="page-title d-flex-md">
+        <div class="date">
+          <h2>Welcome, Dinma</h2>
+        </div>
+      </div>
+      <div class="navlinks driver-nav">
+        <div class="dropdown notification">
+          <a href="#" id="dropdown-toggler" class="link">
+            <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
+          </a>
+          <div class="dropdown-content driver-dropdown-content" id="dropdown-content">
+            <a href="#" class="read">User just made a ride request</a>
+            <a href="#">User just made a ride request</a>
+            <a href="#" class="read">User declined an order</a>
+            <a href="#">User just made a ride request</a>
+            <a href="#">user accepted a ride request</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content" id="has-modal">
+    <div class="sidenav" id="sidenav">
+      <div class="sidenav-content">
+        <div class="sidenav-header">
+          <div class="close d-none-md">
+            <a href="#" aria-hidden="true">&times;</a>
+          </div>
+          <div class="sidenav-title">
+            <h3>
+              <a href="./index.html">RIDE-MY-WAY</a>
+            </h3>
+            <div class="username-circle">
+              <p>D&#9663;</p>
+            </div>
+            <p>Dinma</p>
+            <span>
+              <a href="./index.html">Logout</a>
+            </span>
+          </div>
+        </div>
+        <div class="sidenav-body">
+          <a href="#" class="offer-item active">Dashboard</a>
+          <a href="./user-order-history.html"  class="offer-item">rides</a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="content-wrapper ridez offer-ridez">
+      <div class="date d-none-md">
+      </div>
+      <div class="selectdate-div d-flex-md">
+        <input type="date" id="selectdate">
+      </div>
+      <div class="top">
+        <button class="btn btn-pri" id="offer-modal-btn">Request For A Ride</button>
+      </div>
+      <div class="page-heading">
+        <h2></h2>
+        <hr>
+      </div>
+      <div class ="offer-create">
+      <div class="content" id="one">
+          <form action="./rides-confirmation.html">
+            <div class="form-input">
+              <label for="location"> Current Location</label>
+              <input type="text" required id="locationz" name="location" value="" />
+            </div>
+            
+            <div class="form-input">
+                <label for="destination"> Destination</label>
+                <input type="text" required id="destine" name="Destination" value="" />
+              </div>
+    
+            <div class="form-input">
+              <label for="depature">Departure Time</label>
+              <input type="text" required id="departure" name="departure" value=""  />
+            </div>
+
+            <div class="form-input">
+                
+                <button class="btn btn-pri" id="offer-modal-btn">Create</button>
+                
+                        </div>                           
+
+          </form>
+          </div>
+          </div>
+          </div>
+          
+  </div>
+  
+  <div class="footer">
+    <p>&copy; 2018. Nma Otutu. </p>
+  </div>
+  
+</body>
+
+</html>
