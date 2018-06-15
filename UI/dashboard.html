@@ -9,12 +9,12 @@
   <title>Ride My Way</title>
 </head>
 
-<body class="admin">
+<body class="driver">
   <div class="header">
     <div class="navbar">
-      <div class="menu-control d-none-md">
-        <a href="#" class="d-none-md">
-          <img src="css/images/toggler.png" alt="toggler">
+      <div class="offer-control d-none-md">
+        <a href="#sidenav" class="d-none-md">
+          <img src="./images/toggler.png" alt="toggler">
         </a>
       </div>
       <div class="page-title d-flex-md">
@@ -22,12 +22,12 @@
           <h2>Welcome, Dinma</h2>
         </div>
       </div>
-      <div class="navlinks admin-nav">
+      <div class="navlinks driver-nav">
         <div class="dropdown notification">
           <a href="#" id="dropdown-toggler" class="link">
-            <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
+            <img src="./images/notification.png" alt="notification bell" id="dropdown-img">
           </a>
-          <div class="dropdown-content admin-dropdown-content" id="dropdown-content">
+          <div class="dropdown-content driver-dropdown-content" id="dropdown-content">
             <a href="#" class="read">User just made a ride request</a>
             <a href="#">User just made a ride request</a>
             <a href="#" class="read">User declined an order</a>
@@ -48,40 +48,41 @@
           </div>
           <div class="sidenav-title">
             <h3>
-              <a href="../index.html">RIDE-MY-WAY</a>
+              <a href="./index.html">RIDE-MY-WAY</a>
             </h3>
             <div class="username-circle">
               <p></p>
             </div>
             <p>Dinma</p>
             <span>
-              <a href="../index.html">Logout</a>
+              <a href="./index.html">Logout</a>
             </span>
           </div>
         </div>
         <div class="sidenav-body">
-          <a href="#" class="menu-item active">Dashboard</a>
-          <a href="./rides.html"  class="menu-item">rides</a>
-          <a href="./driver-order-history.html" class="menu-item">Order History</a>
+          <a href="#" class="offer-item active">Dashboard</a>
+          <a href="./rides.html"  class="offer-item">rides</a>
+          <a href="./driver-order-history.html" class="offer-item">Order History</a>
         </div>
       </div>
     </div>
-    <div class="content-wrapper rides offer">
+    <div class="content-wrapper ridez offer-ridez">
       <div class="date d-none-md">
       </div>
-      <div class="datepicker-div d-flex-md">
-        <input type="date" id="datepicker">
+      <div class="selectdate-div d-flex-md">
+        <input type="date" id="selectdate">
       </div>
       <div class="top">
-        <button class="btn btn-pri" id="menu-modal-btn">Make Offer</button>
+        <button class="btn btn-pri" id="offer-modal-btn">Make Offer</button>
       </div>
       <div class="page-heading">
-        <h2></h2>
+        
         <hr>
       </div>
       <div class ="offer-create">
       <div class="content" id="one">
-          <form action="./rides.html">
+        
+          <form action="./dashboard.html">
             <div class="form-input">
               <label for="location"> Current Location</label>
               <input type="text" required id="location" name="location" value="" />
@@ -104,14 +105,16 @@
               <div class="form-input">
                   <label for="Routes"> Routes</label>
                   <input type="text" required id="Routes" name="Routes" value="" />
-                </div>
+               
       
-  
+              </div>
             <div class="form-input">
-                <a href="./rides.html"  class="menu-item">
-                <button class="btn btn-pri" id="menu-modal-btn">Create</button>
+                <a href="./dashboard.html"  class="offer-item">
+                <button class="btn btn-pri" id="offer-modal-btn" onclick="create();">Create</button>
                 </a>
-                        </div>                           
+                        </div>
+                      
+                                               
 
           </form>
           </div>
@@ -124,6 +127,7 @@
     <p>&copy; 2018. Nma Otutu. </p>
   </div>
   
+  <script src="./js/dashboard.js"></script>
 </body>
 
 </html>
