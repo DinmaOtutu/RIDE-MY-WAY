@@ -4,7 +4,7 @@ This is an application that allows user to request for a ride, and the driver ac
 
 #Features
 
-1. ## Driver
+ ## Driver
     * sign up and login
     * Make a ride offer
     * Accept a ride request
@@ -12,7 +12,7 @@ This is an application that allows user to request for a ride, and the driver ac
     * View offer History
     * get notifications
     
- 2. ## Client
+ ## Client
       * sign up and login
       * request for a ride
       * view rides for the day
