@@ -1,3 +1,4 @@
+
 ## RIDE-MY-WAY
 
 This is an application that allows user to request for a ride, and the driver accepts or rejects the request.
@@ -18,7 +19,6 @@ This is an application that allows user to request for a ride, and the driver ac
       *  view rides for the day
       *  decline or continue with request
       *  view ride history
-     
      
      ## Getting Started
 
