@@ -5,19 +5,19 @@ This is an application that allows user to request for a ride, and the driver ac
 #Features
 
 1. ## Driver
-    a. sign up and login
-    b. Make a ride offer
-    c. Accept a ride request
-    d. Reject a ride request
-    e. View offer History
-    f. get notifications
+    * sign up and login
+    * Make a ride offer
+    * Accept a ride request
+    * Reject a ride request
+    * View offer History
+    * get notifications
     
  2. ## Client
-     a. sign up and login
-     b. request for a ride
-     c. view rides for the day
-     d. decline or continue with request
-     e. view ride history
+      * sign up and login
+      * request for a ride
+      * view rides for the day
+      * decline or continue with request
+      * view ride history
      
      
      ## Getting Started
