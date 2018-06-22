@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "driverId": 2,
+    "currentLocation": "Ogudu",
+    "destination": "Oshodi",
+    "startTime": "2018-06-22T03:36:28.476Z",
+    "route": "Ilupeju",
+    "seatsAvail": [
+      12, 1, 4
+    ]
+  }, {
+    "id": 2,
+    "driverId": 2,
+    "currentLocation": "Shomolu",
+    "destination": "Ikeja",
+    "startTime": "2018-06-23T03:36:28.476Z",
+    "route": "Surulere",
+    "seatsAvail": [
+      2, 8
+    ]
+  }, {
+    "id": 3,
+    "driverId": 3,
+    "currentLocation": "Ojo",
+    "destination": "Ajah",
+    "startTime": "2018-06-22T03:45:26.231Z",
+    "route": "Oworonshoki Expressway",
+    "seatsAvail": [
+      10, 2, 7, 2
+    ]
+  }, {
+    "id": 4,
+    "driverId": 1,
+    "currentLocation": "Festac",
+    "destination": "Ijayi",
+    "startTime": "2018-06-22T03:45:26.231Z",
+    "route": "Ibadan Expressway",
+    "seatsAvail": [
+      6, 7, 1
+    ]
+  }
+]

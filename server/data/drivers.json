@@ -1,0 +1,33 @@
+[
+  {
+    "id": 1,
+    "email": "hello@world.com",
+    "name": "helloDriver",
+    "phone": "02189789082",
+    "homeAddress": "No 21 Shomolu street",
+    "password": "2799uj=",
+    "carModel": "Maruti Suzuki Swift",
+    "driverLicense": "12AD79789",
+    "plateNumber": "AE 192-KPU"
+  }, {
+    "id": 2,
+    "email": "hello2@world.com",
+    "name": "helloDriver2",
+    "phone": "02189789083",
+    "homeAddress": "No 22 Shomolu street",
+    "password": "2799ue=",
+    "carModel": "Land Rover Discovery Sport",
+    "driverLicense": "79987UH87",
+    "plateNumber": "AP 214-YEN"
+  }, {
+    "id": 3,
+    "email": "hello3@world.com",
+    "name": "helloDriver3",
+    "phone": "02189789084",
+    "homeAddress": "No 23 Shomolu street",
+    "password": "2739ue=",
+    "carModel": "Audi A3 Cabriolet",
+    "driverLicense": "13AD79789",
+    "plateNumber": "AJ 189-SLK"
+  }
+]

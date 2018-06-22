@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "email": "hello@passenger.com",
+    "name": "helloPassenger1",
+    "phone": "08067877667",
+    "password": "78766y-t="
+  }, {
+    "id": 2,
+    "email": "hello@passenger2.com",
+    "name": "helloPassenger2",
+    "phone": "08067877669",
+    "password": "78765y-t="
+  }, {
+    "id": 3,
+    "email": "hello@passenger3.com",
+    "name": "helloPassenger3",
+    "phone": "08067877660",
+    "password": "88765y-t="
+  }
+]
