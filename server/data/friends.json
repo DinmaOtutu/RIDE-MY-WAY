@@ -1,0 +1,21 @@
+[
+  {
+    "passengerId": 1,
+    "driverId": 2
+  }, {
+    "passengerId": 3,
+    "driverId": 1
+  }, {
+    "passengerId": 3,
+    "driverId": 3
+  }, {
+    "passengerId": 2,
+    "driverId": 1
+  }, {
+    "passengerId": 2,
+    "driverId": 2
+  }, {
+    "passengerId": 1,
+    "driverId": 1
+  }
+]
