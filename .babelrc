@@ -1,0 +1,15 @@
+{
+    "presets": [
+        "env"
+    ],
+    
+    "plugins": [
+        
+        "transform-export-extensions",
+        "babel-plugin-transform-es2015-modules-commonjs",
+        "babel-plugin-add-module-exports",
+        "babel-plugin-transform-object-rest-spread",
+        "transform-runtime"
+    ]
+      
+}
