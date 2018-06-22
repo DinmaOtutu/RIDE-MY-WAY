@@ -3,21 +3,21 @@
 This is an application that allows user to request for a ride, and the driver accepts or rejects the request.
 
 ## Tools
-    * NodeJs - Runtime Environment
-    * ExpressJs - Web Application Framework
+* NodeJs - Runtime Environment
+* ExpressJs - Web Application Framework
 
 ## Supporting Packages
 
    ## Linter
-     * eslint - (linter tool)
+* eslint - (linter tool)
 
    ## Compilier
-    * Babel - compilier for next generation Javascript
+* Babel - compilier for next generation Javascript
    
    ## Test Tools
-    * Mocha - JavaScript Test Framework for API Tests
-    * Chai - TDD/BDD Assertion Library for Node
-    
+* Mocha - JavaScript Test Framework for API Tests
+* Chai - TDD/BDD Assertion Library for Node
+
 
 ## Features
 
