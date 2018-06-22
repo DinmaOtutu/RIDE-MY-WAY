@@ -1,180 +1,81 @@
 
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 15;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+
+}
+
+
 .modal-content {
-    min-width: 200px;
-    min-height: 200px;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+	min-width: 50px;
+    min-height: 50px;
     box-sizing: border-box;
     color: #333;
+	text-align:center;
     background-color: #FFFFFF;
     box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
     border-radius: 5px;
 }
 
-.box-group .modal-content {
-    font-family: "Nunito", sans-serif;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-@media (min-width: 576px) {
-    .box-group .modal-content {
-        font-family: "Nunito", sans-serif;
-        width: 300px !important;
-        display: flex;
-        justify-content: center !important;
-        align-items: center !important;
-    }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.modal {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    z-index: 14;
+
+.modal-header {
+    padding: 2px 16px;
+    color: white;
 }
 
-.modal:before {
-    content: "";
-    display: none;
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 11;
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
 }
 
-.modal.show {
-    display: block;
-}
-
-.modal.show:before {
-    display: block;
-}
-
-.modal.show .modal-content {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-}
-
+/* Modal Content */
 .modal-content {
-    z-index: 13;
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    width: 90vw;
-    -webkit-transform: translate(0, -500%);
-    transform: translate(0, -500%);
-    transition: -webkit-transform 0.3s ease-out;
-    transition: transform 0.3s ease-out;
-    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
-}
-
-@media (min-width: 542.98px) {
-    .modal-content {
-        top: 10%;
-        left: 10%;
-        width: 80vw;
-    }
-}
-
-@media (min-width: 767.98px) {
-    .modal-content {
-        top: 10%;
-        left: 20%;
-        width: 60vw;
-    }
-}
-
-@media (min-width: 991.98px) {
-    .modal-content {
-        top: 10%;
-        left: 25%;
-        width: 50vw;
-    }
-}
-
-@media (min-width: 1199.98px) {
-    .modal-content {
-        top: 10%;
-        left: 30%;
-        width: 40vw;
-    }
-}
-
-.modal-content .modal-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.modal-content .modal-header .modal-title {
-    flex-grow: 11;
-    font-size: 1.5em;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-}
-
-.modal-content .modal-header .modal-title p,
-.modal-content .modal-header .modal-title h3 {
-    margin: 0.5em 0;
-    margin-left: 1.5em;
-}
-
-.modal-content .modal-header .close {
-    flex-grow: 1;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: right;
-    color: #989ea2;
-}
-
-.modal-content .modal-header .close a {
-    display: block;
-    margin: 0.7em 0.7em 0.7em 0;
-}
-
-.modal-content .modal-body {
-    padding: 20px 30px;
-}
-
-.modal-content .modal-body.order-confirmation {
-    margin-top: 0;
-    width: initial;
-}
-
-.modal-content .modal-body .delete-ryde {
-    text-align: center;
-}
-
-.modal-content .modal-body .delete-ryde p {
-    margin-top: 0;
-    font-size: 1.25em;
-}
-
-.modal-content .modal-body .delete-ryde .confirm-delete-btns {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.modal#offer-modal form {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
     padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
 }
 
-.modal#offer-modal form .ryde-options-list {
-    max-height: 60vh;
-    overflow-y: auto;
-}
-
-.modal#offer-modal form .ryde-options-list label {
-    font-weight: 500;
+/* Add Animation */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }

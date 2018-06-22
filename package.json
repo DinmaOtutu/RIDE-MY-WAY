@@ -1,0 +1,46 @@
+{
+  "name": "ride-my-way",
+  "version": "1.0.0",
+  "description": "An app that Ride-my App is a carpooling application that provides drivers with the ability to create ride offers",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint-all": "eslint \"server/**/*.js\" app.js",
+    "start:serve": "nodemon -x \"node -r dotenv/config ./node_modules/babel-cli/bin/babel-node ./server/bin/www\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DinmaOtutu/RIDE-MY-WAY.git"
+  },
+  "author": "Otutu Dinma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DinmaOtutu/RIDE-MY-WAY/issues"
+  },
+  "homepage": "https://github.com/DinmaOtutu/RIDE-MY-WAY#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "babel-register": "^6.26.0",
+    "babel-types": "^6.26.0",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "source-map": "^0.7.3"
+  }
+}
