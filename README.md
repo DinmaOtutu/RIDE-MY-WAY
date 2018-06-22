@@ -2,6 +2,8 @@
 
 This is an application that allows user to request for a ride, and the driver accepts or rejects the request.
 
+[![Build Status](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY.svg?branch=master)](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY)
+
 ## Tools
 * NodeJs - Runtime Environment
 * ExpressJs - Web Application Framework
