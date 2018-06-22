@@ -2,6 +2,23 @@
 
 This is an application that allows user to request for a ride, and the driver accepts or rejects the request.
 
+## Tools
+    * NodeJs - Runtime Environment
+    * ExpressJs - Web Application Framework
+
+## Supporting Packages
+
+   ## Linter
+     * eslint - (linter tool)
+
+   ## Compilier
+    * Babel - compilier for next generation Javascript
+   
+   ## Test Tools
+    * Mocha - JavaScript Test Framework for API Tests
+    * Chai - TDD/BDD Assertion Library for Node
+    
+
 ## Features
 
 1. ## Driver
@@ -28,5 +45,5 @@ This is an application that allows user to request for a ride, and the driver ac
 
      ## Template
 
-     Template is hosted on github pages the link will soon be attached.
+     Template is hosted on github pages https://dinmaotutu.github.io/RIDE-MY-WAY/.
      
