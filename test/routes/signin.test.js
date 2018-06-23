@@ -32,7 +32,7 @@ suite('Tests form signin route - /api/version/signup', () => {
         expect(res.body).to.have.keys('msg');
       });
 
-      test('Expet success for existing driver login', async () => {
+      test('Expect success for existing driver login', async () => {
         const res = await chai.request(app)
           .post(`${api}/signin`)
           .send(existingDriver);
@@ -42,17 +42,13 @@ suite('Tests form signin route - /api/version/signup', () => {
       });
 
       test('Expect fail for non-existent user signin', async () => {
-        try {
-          await chai.request(app)
-            .post(`${api}/signin`)
-            .send(nonExistentUser);
-          expect.fail('Expected fail on non-existent user sigin');
-        } catch (e) {
-          expect(e).to.have.property('response');
-          expect(e.response).a('json');
-          expect(e.response).to.have.status(401);
-          expect(e.response.body).property('msg').a('string');
-        }
+        const res = await chai.request(app)
+          .post(`${api}/signin`)
+          .send(nonExistentUser);
+
+        expect(res).a('json');
+        expect(res).to.have.status(401);
+        expect(res.body).property('msg').a('string');
       });
     });
   });

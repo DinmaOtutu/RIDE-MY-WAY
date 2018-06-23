@@ -1,8 +1,12 @@
-import { signup, signin } from '../../controllers';
+import { signup } from '../../controllers';
 
 export default (app) => {
-	// routes for users sign up and sign in
+  // welcome route
+  app.get('/', (req, res) =>
+    res.status(200).send({
+      msg: 'Welcome to ride-my-way',
+    }));
+
+  // routes for users sign up
   app.post('/signup', signup);
-  app.post('/signin', signin);
-  
 };
