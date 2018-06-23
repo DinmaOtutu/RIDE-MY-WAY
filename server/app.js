@@ -34,7 +34,7 @@ Object.keys(VERSIONS).forEach((v) => {
     .use(`/api/${v}`, router);
 
   // define catchall on extraneous request
-  router.all('/*', (req, res) => {
+  router.all('/', (req, res) => {
     res.status(501).send({
       msg: 'Not yet implemented. Maybe later, -catchall',
     });
@@ -42,7 +42,7 @@ Object.keys(VERSIONS).forEach((v) => {
 });
 
 // redirect to api url set in process.env
-app.get('/*', (req, res) => {
+app.get('/', (req, res) => {
   res.redirect(`api/${process.env.VERSION}`);
 });
 
