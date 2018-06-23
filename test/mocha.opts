@@ -1,0 +1,4 @@
+--ui tdd
+--require dotenv/config
+--require babel-register
+--recursive
