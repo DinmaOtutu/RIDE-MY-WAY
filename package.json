@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha",
     "lint-all": "eslint \"server/**/*.js\" app.js",
-    "start:serve": "nodemon -x \"node -r dotenv/config ./node_modules/babel-cli/bin/babel-node ./server/bin/www\""
+    "start:serve": "nodemon -x \"node -r dotenv/config ./node_modules/babel-cli/bin/babel-node ./server/bin/www\"",
+    "start2": "nodemon -r dotenv/config server/bin/bootstrap",
+    "heroku:start": "node server/bin/bootstrap"
   },
   "repository": {
     "type": "git",
@@ -17,18 +19,9 @@
   "bugs": {
     "url": "https://github.com/DinmaOtutu/RIDE-MY-WAY/issues"
   },
-  "engine": {
-     "node": "10.0.0"
-  },
   "homepage": "https://github.com/DinmaOtutu/RIDE-MY-WAY#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "babel-plugin-transform-export-extensions": "^6.22.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
+    
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "eslint": "^4.19.1",
@@ -42,11 +35,15 @@
   "dependencies": {
     "babel-register": "^6.26.0",
     "babel-types": "^6.26.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "source-map": "^0.7.3"
-  },
-  "directories": {
-    "test": "test"
   }
 }

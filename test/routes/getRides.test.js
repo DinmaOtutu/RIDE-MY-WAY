@@ -34,32 +34,22 @@ suite('Tests for getRideOffers route - /api/version/users/:userId/rides', () => 
       });
 
       test('Expect 401 error on request from non-authenticated user', async () => {
-        try {
-          await chai.request(app)
-            .get(`${api}/users/${passengerId}/rides`);
+        const res = await chai.request(app)
+          .get(`${api}/users/${passengerId}/rides`);
 
-          expect.fail('Expected 401 error on non-authenticated request');
-        } catch (e) {
-          expect(e).to.have.property('response');
-          expect(e.response).to.have.property('msg');
-          expect(e.response).to.have.status(401);
-          expect(e.response.msg).to.be.a('string');
-        }
+        expect(res.body).to.have.property('msg');
+        expect(res).to.have.status(401);
+        expect(res.body.msg).to.be.a('string');
       });
 
       test('Route should not be available to driver accounts - return 401 error', async () => {
-        try {
-          const token = driverToken(1);
-          await chai.request(app)
-            .get(`${api}/users/1/rides`);
+        const token = driverToken(1);
+        await chai.request(app)
+          .get(`${api}/users/1/rides`);
 
-          expect.fail('Expected 401 - route not available for driver accounts');
-        } catch (e) {
-          expect(e).to.have.property('response');
-          expect(e.response).to.have.property('msg');
-          expect(e.response).to.have.status(401);
-          expect(e.response.msg).to.be.a('string');
-        }
+        expect(res).to.have.property('msg');
+        expect(res).to.have.status(401);
+        expect(res.msg).to.be.a('string');
       });
     });
   });
