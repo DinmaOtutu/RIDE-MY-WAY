@@ -35,7 +35,7 @@ suite('Tests for getFriends route - /api/version/users/:id/friends', () => {
 
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('array').with.property('friends');
-        expect(res.body.friends).to.not.include.key('password');
+        expect(res.body.friends).to.not.have.key('password');
         expect(res.body.friends).to.eql(passengerFriends);
       });
 

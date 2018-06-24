@@ -14,7 +14,7 @@ const api = `/api/${process.env.VERSION}`;
 // logs in and returns a token
 
 export async function passengerToken(passengerId) {
-  const { email, password } = passengers[passengerId];
+  const { email, password } = passengers.find(passenger => passenger.id === passengerId);
 
   const res = await chai.request(app)
     .post(`${api}/signin`)
@@ -23,7 +23,7 @@ export async function passengerToken(passengerId) {
 }
 
 export async function driverToken(driverId) {
-  const { email, password } = drivers[driverId];
+  const { email, password } = drivers.find(driver => driver.id === driverId);
 
   const res = await chai.request(app)
     .post(`${api}/signin`)

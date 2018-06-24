@@ -20,7 +20,7 @@ const {
   nonExistentUser,
 } = signin;
 
-suite('Tests form signin route - /api/version/signup', () => {
+suite('Tests for signin route - /api/version/signin', () => {
   suite('POST /api/version/signin', () => {
     suite('Existing passenger signin', () => {
       test('Expect success for existing passenger signin', async () => {
@@ -35,18 +35,17 @@ suite('Tests form signin route - /api/version/signup', () => {
       test('Expect success for existing driver login', async () => {
         const res = await chai.request(app)
           .post(`${api}/signin`)
+          .set('content-type', 'application/json')
           .send(existingDriver);
         expect(res).to.have.status(200);
         expect(res.body).to.have.keys('msg');
         expect(res.body.msg).to.be.a('string');
       });
 
-      test('Expect fail for non-existent user signin', async () => {
+      test('Expect error 401 for non-existent user signin', async () => {
         const res = await chai.request(app)
           .post(`${api}/signin`)
           .send(nonExistentUser);
-
-        expect(res).a('json');
         expect(res).to.have.status(401);
         expect(res.body).property('msg').a('string');
       });
