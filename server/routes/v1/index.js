@@ -1,4 +1,6 @@
-import { Signup, Signin } from '../../controllers';
+import { Signup, Signin, Rides } from '../../controllers';
+
+import { Authorization } from '../../middlewares';
 
 export default (app) => {
   // welcome route
@@ -12,4 +14,7 @@ export default (app) => {
 
   // routes for users sign in
   app.post('/signin', Signin.signin);
+
+  // routes for getRides
+  app.get('/rides', Authorization.verifyMiddleware, Rides.getRides);
 };

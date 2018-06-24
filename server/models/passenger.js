@@ -34,17 +34,17 @@ export default class Passenger {
     ...all
   }) {
     const allPas = Passenger.all();
-    for (let i = 0; i <= allPas.length; i += 1) {
-      const passenger = allPas[i];
+    return allPas.find((passenger) => {
+      let found;
 
-      let found = passenger;
       Object.keys(all).forEach((key) => {
-        if (passenger[key] === undefined || (passenger[key] !== all[key])) {
-          found = null;
+        if (passenger[key] && passenger[key] === all[key]) {
+          found = passenger;
         }
       });
+
       return found || false;
-    }
+    });
   }
 
   static all() {

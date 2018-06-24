@@ -2,7 +2,7 @@ import Passenger from './passenger';
 
 import Friend from './friend';
 
-import { drivers } from '../data';
+import { drivers, rideOffers } from '../data';
 
 export default class Driver extends Passenger {
   constructor(
@@ -47,17 +47,18 @@ export default class Driver extends Passenger {
     ...all
   }) {
     const allDrivers = Driver.all();
-    for (let i = 0; i <= allDrivers.length; i += 1) {
-      const driver = allDrivers[i];
 
-      let found = driver;
+    return allDrivers.find((driver) => {
+      let found;
+
       Object.keys(all).forEach((key) => {
-        if (driver[key] === undefined || (driver[key] !== all[key])) {
-          found = null;
+        if (driver[key] && driver[key] === all[key]) {
+          found = driver;
         }
       });
+
       return found || false;
-    }
+    });
   }
 
   // instance methods
@@ -111,6 +112,10 @@ export default class Driver extends Passenger {
     return Friend.getFriends({
       driverId,
     });
+  }
+
+  get rideOffers() {
+    return rideOffers.filter(offer => offer.driverId === this.id);
   }
 }
 
