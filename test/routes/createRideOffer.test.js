@@ -22,9 +22,13 @@ const {
   existingPassengerId,
 } = createRideOffer;
 
-const token = driverToken(driverId);
+let token;
+let token2;
 
-const token2 = passengerToken(existingPassengerId);
+(async () => {
+  token = driverToken(driverId);
+  token2 = passengerToken(existingPassengerId);
+})();
 
 suite('Tests for createRideOffer route - /api/version/rides', () => {
   suite('POST /api/version/rides', () => {

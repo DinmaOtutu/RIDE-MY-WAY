@@ -23,10 +23,15 @@ const {
   nonExistentRideOffer: { Id: nonExistentId },
 } = singleRideOffer;
 
-// token for passenger passengerId
-const token = passengerToken(passengerId);
+let token;
 
-const token2 = driverToken(driverId);
+let token2;
+
+(async () => {
+  token = await passengerToken(passengerId);
+  token2 = await driverToken(driverId);
+})();
+
 
 suite('Tests for getSingleRideOffer route - /api/version/ride/:rideId', () => {
   suite('GET /api/version/ride/:rideId', () => {

@@ -27,7 +27,7 @@ suite('Tests for getRideOffers route - /api/version/rides', () => {
     suite('Get ride offers from friends', () => {
       test('Expect authenticated passenger to get ride offers from his driver friends', async () => {
         // token for passenger passengerId
-        const token = passengerToken(passengerId);
+        const token = await passengerToken(passengerId);
         const res = await chai.request(app)
           .get(`${api}/rides`)
           .set('x-access-header', token);
@@ -47,9 +47,10 @@ suite('Tests for getRideOffers route - /api/version/rides', () => {
       });
 
       test('Route should not be available to driver accounts - return 401 error', async () => {
-        const token = driverToken(existingDriverId);
+        const token = await driverToken(existingDriverId);
         const res = await chai.request(app)
-          .get(`${api}/rides`);
+          .get(`${api}/rides`)
+          .set('x-access-header', token);
 
         expect(res).to.have.property('msg');
         expect(res).to.have.status(401);

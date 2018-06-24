@@ -23,9 +23,13 @@ const {
 
 const api = `/api/${process.env.VERSION}`;
 
-const token = passengerToken(passengerId);
+let token;
+let token2;
 
-const token2 = driverToken(existingDriverId);
+(async () => {
+  token = await driverToken(passengerId);
+  token2 = await passengerToken(existingDriverId);
+})();
 
 suite('Tests for rideRequest route - /api/version/rides/:rideId/requests', () => {
   suite('POST /api/version/rides/:rideId/requests', () => {
