@@ -33,7 +33,7 @@ const api = `/api/${process.env.VERSION}`;
 suite('Tests for signup route - /api/version/signup', () => {
   suite('POST /api/version/signup', () => {
     suite('New passenger account', () => {
-      test('Expect fail for invalid email', async () => {
+      test('Expect error 400 for invalid email', async () => {
         const res = await chai.request(app)
           .post(`${api}/signup`)
           .send(badMail);
@@ -51,7 +51,7 @@ suite('Tests for signup route - /api/version/signup', () => {
         expect(res.body).to.have.property('msg').that.is.a('string');
       });
 
-      test('Expect fail for incomplete parameters', async () => {
+      test('Expect status 400 for incomplete parameters', async () => {
         const res = await chai.request(app)
           .post(`${api}/signup`)
           .send(incompletePassenger);
@@ -72,16 +72,15 @@ suite('Tests for signup route - /api/version/signup', () => {
     });
 
     suite('New driver account', () => {
-      test('Expect fail for invalid driver email', async () => {
+      test('Expect status 400 for invalid driver email', async () => {
         const res = await chai.request(app)
           .post(`${api}/signup`)
           .send(badMailDriver);
-
         expect(res).to.have.status(400);
         expect(res.body).to.have.keys('msg');
       });
 
-      test('Expect fail for incomplete driver account params', async () => {
+      test('Expect status 400 for incomplete driver account params', async () => {
         const res = await chai.request(app)
           .post(`${api}/signup`)
           .send(incompleteDriver);
@@ -90,7 +89,7 @@ suite('Tests for signup route - /api/version/signup', () => {
         expect(res).to.have.status(400);
       });
 
-      test('Expect fail for invalid phone number', async () => {
+      test('Expect status 400 for invalid phone number', async () => {
         const res = await chai.request(app)
           .post(`${api}/signup`)
           .send(badPhoneDriver);

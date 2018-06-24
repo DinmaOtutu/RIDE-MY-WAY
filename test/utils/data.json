@@ -122,6 +122,7 @@
   },
   "getRideOffers": {
     "passengerId": 1,
+    "existingDriverId": 3,
     "rideOffers": [
       {
         "id": 1,
@@ -162,5 +163,130 @@
         ]
       }
     ]
+  },
+  "singleRideOffer": {
+    "passengerId": 1,
+    "validRideOffer": {
+      "id": 4,
+      "driverId": 1,
+      "currentLocation": "Festac",
+      "destination": "Ijayi",
+      "startTime": "2018-06-22T03:45:26.231Z",
+      "route": "Ibadan Expressway",
+      "seatsAvail": [
+        6, 7, 1
+      ]
+    },
+    "invalidRideOffer": {
+      "id": 3,
+      "driverId": 3,
+      "currentLocation": "Ojo",
+      "destination": "Ajah",
+      "startTime": "2018-06-22T03:45:26.231Z",
+      "route": "Oworonshoki Expressway",
+      "seatsAvail": [
+        10, 2, 7, 2
+      ]
+    },
+    "nonExistentRideOffer": {
+      "id": 40
+    }
+  },
+  "createRideOffer": {
+    "driverId": 3,
+    "newRideOffer": {
+      "driverId": 3,
+      "currentLocation": "Gbagada",
+      "destination": "Obalende",
+      "startTime": "2018-01-21T03:46:28.476Z",
+      "route": "Third mainland bridge",
+      "seatsAvail": [
+        7, 2
+      ]
+    },
+    "existingPassengerId": 2
+  },
+  "rideRequest": {
+    "existingDriverId": 2,
+    "passengerId": 1,
+    "nonExistentRideId": 12,
+    "availRideId": 4,
+    "unavailRideId": 3,
+    "validPassengerRequest": {
+      "passengerLocation": "Agege",
+      "destination": "Voks",
+      "departTime": "2018-01-21T03:46:28.476Z",
+      "seatNumber": 7
+    },
+    "driverRequest": {
+      "passengerLocation": "Agege",
+      "destination": "Voks",
+      "departTime": "2018-01-21T03:46:28.476Z"
+    },
+    "requestUnavailSeat": {
+      "passengerLocation": "Agege",
+      "destination": "Ojota",
+      "departTime": "2018-01-21T03:46:28.476Z",
+      "seatNumber": 19
+    }
+  },
+  "getRideRequests": {
+    "driverId": 2,
+    "existingPassengerId": 3,
+    "rideRequests": [
+      {
+        "id": 3,
+        "passengerLocation": "Lekki",
+        "destination": "Ajah",
+        "passengerId": 3,
+        "rideOfferId": 1,
+        "departTime": "2018-03-22T03:48:57.401Z",
+        "seatNumber": null
+      },
+      {
+        "id": 1,
+        "passengerLocation": "Ilupeju",
+        "destination": "Ikorodu",
+        "passengerId": 2,
+        "rideOfferId": 2,
+        "departTime": "2018-06-22T03:48:57.401Z",
+        "seatNumber": null
+      }
+    ]
+  },
+  "getSingleRideRequest": {
+    "rideRequest": {
+      "id": 1,
+      "passengerLocation": "Ilupeju",
+      "destination": "Ikorodu",
+      "passengerId": 2,
+      "rideOfferId": 2,
+      "departTime": "2018-06-22T03:48:57.401Z",
+      "seatNumber": null
+    },
+    "driverId": 2,
+    "existingPassengerId": 3,
+    "nonExistentRequestId": 10,
+    "otherDriverRequestId": 2
+  },
+  "acceptRequest": {
+    "passengerFriendId": 3,
+    "driverId": 3,
+    "newRideOffer": {
+      "driverId": 3,
+      "currentLocation": "Gbagada",
+      "destination": "Obalende",
+      "startTime": "2018-01-21T03:46:28.476Z",
+      "route": "Third mainland bridge",
+      "seatsAvail": [
+        7, 2
+      ]
+    },
+    "offerRequest": {
+      "passengerLocation": "Epema",
+      "destination": "Obalende",
+      "departTime": "2018-01-21T03:46:28.476Z",
+      "seatNumber": 2
+    }
   }
 }
