@@ -1,4 +1,4 @@
-import { signup, signin } from '../../controllers';
+import { Signup, Signin } from '../../controllers';
 
 export default (app) => {
   // welcome route
@@ -8,8 +8,8 @@ export default (app) => {
     }));
 
   // routes for users sign up
-  app.post('/signup', signup);
-  
+  app.post('/signup', Signup.signup);
+
   // routes for users sign in
-  app.post('/signin', signin);
+  app.post('/signin', Signin.signin);
 };
