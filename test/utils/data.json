@@ -288,5 +288,25 @@
       "departTime": "2018-01-21T03:46:28.476Z",
       "seatNumber": 2
     }
+  },
+  "rejectRequest": {
+    "passengerFriendId": 2,
+    "driverId": 1,
+    "newRideOffer": {
+      "driverId": 3,
+      "currentLocation": "Freedom Park",
+      "destination": "Alapere",
+      "startTime": "2018-06-22T03:45:26.231Z",
+      "route": "Surulere",
+      "seatsAvail": [
+        8
+      ]
+    },
+    "offerRequest": {
+      "passengerLocation": "Buari",
+      "destination": "Festac",
+      "departTime": "2018-03-29T03:48:57.401Z",
+      "seatNumber": 8
+    }
   }
 }

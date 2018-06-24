@@ -23,9 +23,13 @@ const {
   otherDriverRequestId,
 } = getSingleRideRequest;
 
-const token = driverToken(driverId);
+let token;
+let token2;
 
-const token2 = passengerToken(existingPassengerId);
+(async () => {
+  token = await driverToken(driverId);
+  token2 = await passengerToken(existingPassengerId);
+})();
 
 suite('Tests for getSingleRideRequest route - /api/version/rides/requests/:requestId', () => {
   suite('GET /api/version/rides/requests/:requestId', () => {

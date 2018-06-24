@@ -27,7 +27,7 @@ suite('Tests for getFriends route - /api/version/users/:id/friends', () => {
     suite('Get a passenger\'s friends', () => {
       test('Expect passenger to get all his driver friends', async () => {
         // token for passenger passengerId
-        const token = passengerToken(passengerId);
+        const token = await passengerToken(passengerId);
 
         const res = await chai.request(app)
           .get(`${api}/users/${passengerId}/friends`)
@@ -41,7 +41,7 @@ suite('Tests for getFriends route - /api/version/users/:id/friends', () => {
 
       test('Expect driver to get all driver friends', async () => {
         // token for driver driverId
-        const token = driverToken(driverId);
+        const token = await driverToken(driverId);
 
         const res = await chai.request(app)
           .get(`${api}/users/${driverId}/friends`)
