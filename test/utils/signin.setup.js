@@ -19,6 +19,7 @@ export async function passengerToken(passengerId) {
   const res = await chai.request(app)
     .post(`${api}/signin`)
     .send({ email, password });
+
   return res.body.token;
 }
 

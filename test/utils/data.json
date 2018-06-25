@@ -162,6 +162,18 @@
           1
         ]
       }
+    ], "driverRideOffers": [
+      {
+        "id": 3,
+        "driverId": 3,
+        "currentLocation": "Ojo",
+        "destination": "Ajah",
+        "startTime": "2018-06-22T03:45:26.231Z",
+        "route": "Oworonshoki Expressway",
+        "seatsAvail": [
+          10, 2, 7
+        ]
+      }
     ]
   },
   "singleRideOffer": {
@@ -195,7 +207,6 @@
   "createRideOffer": {
     "driverId": 3,
     "newRideOffer": {
-      "driverId": 3,
       "currentLocation": "Gbagada",
       "destination": "Obalende",
       "startTime": "2018-01-21T03:46:28.476Z",

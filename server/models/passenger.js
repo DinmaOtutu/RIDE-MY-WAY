@@ -20,13 +20,17 @@ export default class Passenger {
     email, name,
     phone, password,
   }) {
-    const passenger = new Passenger(
-      email, name,
-      phone, password,
-    );
+    if (Passenger.isUnique({ email })) {
+      const passenger = new Passenger(
+        email, name,
+        phone, password,
+      );
 
-    passengers.push(passenger);
-    return passenger;
+      passengers.push(passenger);
+      return passenger;
+    }
+
+    return false;
   }
 
   // eslint-disable-next-line consistent-return
@@ -34,21 +38,28 @@ export default class Passenger {
     ...all
   }) {
     const allPas = Passenger.all();
-    for (let i = 0; i <= allPas.length; i += 1) {
-      const passenger = allPas[i];
-
+    return allPas.find((passenger) => {
       let found = passenger;
+
       Object.keys(all).forEach((key) => {
-        if (passenger[key] === undefined || (passenger[key] !== all[key])) {
-          found = null;
+        if (!passenger[key] || passenger[key] !== all[key]) {
+          found = false;
         }
       });
-      return found || false;
-    }
+
+      return found;
+    });
   }
 
   static all() {
     return passengers;
+  }
+
+  static isUnique({ ...properties }) {
+    if (Passenger.findOne(properties)) {
+      return false;
+    }
+    return true;
   }
 
   // instance methods

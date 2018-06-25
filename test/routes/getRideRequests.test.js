@@ -21,9 +21,14 @@ const {
   rideRequests,
 } = getRideRequests;
 
-const token = driverToken(driverId);
 
-const token2 = passengerToken(existingPassengerId);
+let token;
+let token2;
+
+(async () => {
+  token = await driverToken(driverId);
+  token2 = await passengerToken(existingPassengerId);
+})();
 
 suite('Tests for getRideRequests route - /api/version/rides/requests', () => {
   suite('GET /api/version/rides/requests', () => {
@@ -48,11 +53,11 @@ suite('Tests for getRideRequests route - /api/version/rides/requests', () => {
       expect(res.body).to.not.have.property('rideRequests');
     });
 
-    test('Expect 401 for request by unauthenticated driver', async () => {
+    test('Expect 403 for request by unauthenticated driver', async () => {
       const res = await chai.request(app)
         .get(`${api}/rides/requests`);
 
-      expect(res).to.have.status(401);
+      expect(res).to.have.status(403);
       expect(res.body).to.have.property('msg').a('string');
       expect(res.body).to.not.have.property('rideRequests');
     });

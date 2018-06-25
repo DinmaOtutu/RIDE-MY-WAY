@@ -26,8 +26,8 @@ let token;
 let token2;
 
 (async () => {
-  token = driverToken(driverId);
-  token2 = passengerToken(existingPassengerId);
+  token = await driverToken(driverId);
+  token2 = await passengerToken(existingPassengerId);
 })();
 
 suite('Tests for createRideOffer route - /api/version/rides', () => {
@@ -48,11 +48,12 @@ suite('Tests for createRideOffer route - /api/version/rides', () => {
 
       const res2 = await requester
         .post(`${api}/rides`)
+        .send(newRideOffer)
         .set('x-access-token', token);
 
       expect(res2).to.have.status(201);
       expect(res2.body).to.have.property('rideOffer').an('object');
-      expect(newRideOffer).to.deep.include(res2.body.rideOffer);
+      expect(res2.body.rideOffer).to.deep.include(newRideOffer);
 
       // expect rideoffers to increase by 1
       const res3 = await requester
@@ -60,7 +61,7 @@ suite('Tests for createRideOffer route - /api/version/rides', () => {
         .set('x-access-token', token);
 
       expect(res3).status(200);
-      expect(res.body.rideOffers).length(initialOffers + 1);
+      expect(res3.body.rideOffers).length(initialOffers + 1);
 
       // close server
       await requester.close();

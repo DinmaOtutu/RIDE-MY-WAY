@@ -29,7 +29,7 @@ suite('Tests for signin route - /api/version/signin', () => {
           .set('content-type', 'application/json')
           .send(existingPassenger);
         expect(res).to.have.status(200);
-        expect(res.body).to.have.keys('msg');
+        expect(res.body).to.have.keys('msg', 'token');
       });
 
       test('Expect success for existing driver login', async () => {
@@ -38,7 +38,7 @@ suite('Tests for signin route - /api/version/signin', () => {
           .set('content-type', 'application/json')
           .send(existingDriver);
         expect(res).to.have.status(200);
-        expect(res.body).to.have.keys('msg');
+        expect(res.body).to.have.keys('msg', 'token');
         expect(res.body.msg).to.be.a('string');
       });
 

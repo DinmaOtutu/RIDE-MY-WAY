@@ -2,7 +2,7 @@ import Passenger from './passenger';
 
 import Friend from './friend';
 
-import { drivers } from '../data';
+import { drivers, rideOffers } from '../data';
 
 export default class Driver extends Passenger {
   constructor(
@@ -27,15 +27,19 @@ export default class Driver extends Passenger {
     password, carModel,
     driverLicense, plateNumber,
   }) {
-    const driver = new Driver(
-      email, name,
-      phone, homeAddress,
-      password, carModel,
-      driverLicense, plateNumber,
-    );
+    if (Driver.isUnique({ email })) {
+      const driver = new Driver(
+        email, name,
+        phone, homeAddress,
+        password, carModel,
+        driverLicense, plateNumber,
+      );
 
-    drivers.push(driver);
-    return driver;
+      drivers.push(driver);
+      return driver;
+    }
+
+    return false;
   }
 
   static all() {
@@ -47,17 +51,25 @@ export default class Driver extends Passenger {
     ...all
   }) {
     const allDrivers = Driver.all();
-    for (let i = 0; i <= allDrivers.length; i += 1) {
-      const driver = allDrivers[i];
 
+    return allDrivers.find((driver) => {
       let found = driver;
+
       Object.keys(all).forEach((key) => {
-        if (driver[key] === undefined || (driver[key] !== all[key])) {
-          found = null;
+        if (!driver[key] || driver[key] !== all[key]) {
+          found = false;
         }
       });
-      return found || false;
+
+      return found;
+    });
+  }
+
+  static isUnique({ ...properties }) {
+    if (Driver.findOne(properties)) {
+      return false;
     }
+    return true;
   }
 
   // instance methods
@@ -106,10 +118,14 @@ export default class Driver extends Passenger {
     return this;
   }
 
+  get rideOffers() {
+    return rideOffers.filter(rideOffer => rideOffer.driverId === this.id);
+  }
+
   get friends() {
     const driverId = this.id;
     return Friend.getFriends({
-      driverId,
+      driverId, passengerId: null,
     });
   }
 }

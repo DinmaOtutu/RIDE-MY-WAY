@@ -1,6 +1,7 @@
 import express from 'express';
 import * as v1 from './routes/v1';
 
+// other versions can be added
 const VERSIONS = {
   v1,
 };
@@ -11,6 +12,7 @@ const urlParser = express.urlencoded({
 
 const jsonParser = express.json();
 
+// initiating express
 const app = express();
 
 app
@@ -19,7 +21,7 @@ app
 
 // attach versions
 Object.keys(VERSIONS).forEach((v) => {
-  // non-api specific router
+  // non-api specific router 
   const router = express.Router();
 
   // all routes for specific version

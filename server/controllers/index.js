@@ -1,3 +1,5 @@
-export signup from './signup';
+export Signup from './signup';
 
-export signin from './signin';
+export Signin from './signin';
+
+export Ride from './ride';
