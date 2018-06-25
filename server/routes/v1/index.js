@@ -1,4 +1,4 @@
-import { Signup, Signin, Rides } from '../../controllers';
+import { Signup, Signin, Ride } from '../../controllers';
 
 import { Authorization } from '../../middlewares';
 
@@ -15,6 +15,18 @@ export default (app) => {
   // routes for users sign in
   app.post('/signin', Signin.signin);
 
-  // routes for getRides
-  app.get('/rides', Authorization.verifyMiddleware, Rides.getRides);
+  // route for getRides
+  app.get('/rides', Authorization.verifyTokenMware, Ride.getRides);
+
+  // route for getSingleRideOffer
+  app.get('/rides/:rideId', Authorization.verifyTokenMware, Ride.getSingleRide);
+
+  // route for createRideOffer
+  app.post('/rides', Authorization.verifyTokenMware, Ride.createRide);
+
+  // route for getSingleRideRequest
+  // app.post('/rides/requests/:rideRequestId', Authorization.verifyTokenMware, Authorization.authorizeRole({ role: 'Driver' }), Ride.getSingleRide);
+
+  // route for createRideRequest
+  app.post('/rides/:rideId/requests', Authorization.verifyTokenMware, Authorization.authorizeRole({ role: 'Driver' }), Ride.request);
 };

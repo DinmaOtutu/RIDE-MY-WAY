@@ -31,7 +31,7 @@ let token2;
 
 suite('Tests for acceptRequest route - /api/version/rides/requests/:requestId', () => {
   suite('PUT /api/version/rides/requests/:requestId', () => {
-    test('Expect success on valid request by driver', async () => {
+    test.skip('Expect success on valid request by driver', async () => {
       // keep server open
       const requester = chai.request(app).keepOpen();
 
@@ -72,7 +72,7 @@ suite('Tests for acceptRequest route - /api/version/rides/requests/:requestId', 
       await requester.close();
     });
 
-    test('Route is unavailable to passenger accounts - error 401', async () => {
+    test.skip('Route is unavailable to passenger accounts - error 401', async () => {
 
       const res = await chai.request(app)
         .put(`${api}/rides/requests/1`)

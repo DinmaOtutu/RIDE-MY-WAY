@@ -25,7 +25,7 @@ const api = `/api/${process.env.VERSION}`;
 suite('Tests for getFriends route - /api/version/users/:id/friends', () => {
   suite('GET /api/version/users/:id/friends', () => {
     suite('Get a passenger\'s friends', () => {
-      test('Expect passenger to get all his driver friends', async () => {
+      test.skip('Expect passenger to get all his driver friends', async () => {
         // token for passenger passengerId
         const token = await passengerToken(passengerId);
 
@@ -39,7 +39,7 @@ suite('Tests for getFriends route - /api/version/users/:id/friends', () => {
         expect(res.body.friends).to.eql(passengerFriends);
       });
 
-      test('Expect driver to get all driver friends', async () => {
+      test.skip('Expect driver to get all driver friends', async () => {
         // token for driver driverId
         const token = await driverToken(driverId);
 

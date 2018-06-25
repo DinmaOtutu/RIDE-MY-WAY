@@ -31,7 +31,7 @@ let token2;
 
 suite('Tests for rejectRequest route - /api/version/rides/requests/:requestId', () => {
   suite('PUT /api/version/rides/requests/:requestId', () => {
-    test('Expect status 200 with updated resource on valid request by driver', async () => {
+    test.skip('Expect status 200 with updated resource on valid request by driver', async () => {
       // keep server open
       const requester = chai.request(app).keepOpen();
 
@@ -71,5 +71,7 @@ suite('Tests for rejectRequest route - /api/version/rides/requests/:requestId', 
 
       await requester.close();
     });
+
+    test('Route should return ');
   });
 });

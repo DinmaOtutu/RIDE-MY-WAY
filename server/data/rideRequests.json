@@ -14,7 +14,7 @@
     "passengerId": 1,
     "rideOfferId": 3,
     "departTime": "2018-03-22T03:48:57.401Z",
-    "seatNumber": null
+    "seatNumber": 7
   }, {
     "id": 3,
     "passengerLocation": "Lekki",

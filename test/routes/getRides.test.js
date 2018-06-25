@@ -10,10 +10,11 @@ import { passengerToken, driverToken } from '../utils/signin.setup';
 
 import { getRideOffers } from '../utils/data.json';
 
-const { 
+const {
   passengerId,
   rideOffers,
   existingDriverId,
+  driverRideOffers,
 } = getRideOffers;
 
 const { expect } = chai;
@@ -30,31 +31,30 @@ suite('Tests for getRideOffers route - /api/version/rides', () => {
         const token = await passengerToken(passengerId);
         const res = await chai.request(app)
           .get(`${api}/rides`)
-          .set('x-access-header', token);
+          .set('x-access-token', token);
 
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('rideOffers');
         expect(res.body.rideOffers).eql(rideOffers);
       });
 
-      test('Expect 401 error on request from non-authenticated user', async () => {
+      test('Expect 403 error on request from non-authenticated user', async () => {
         const res = await chai.request(app)
           .get(`${api}/rides`);
 
-        expect(res).to.have.property('msg');
-        expect(res).to.have.status(401);
+        expect(res.body).to.have.property('msg');
+        expect(res).to.have.status(403);
         expect(res.body.msg).to.be.a('string');
       });
 
-      test('Route should not be available to driver accounts - return 401 error', async () => {
+      test('Route should be available to driver accounts - return 200', async () => {
         const token = await driverToken(existingDriverId);
         const res = await chai.request(app)
           .get(`${api}/rides`)
-          .set('x-access-header', token);
+          .set('x-access-token', token);
 
-        expect(res).to.have.property('msg');
-        expect(res).to.have.status(401);
-        expect(res.body.msg).to.be.a('string');
+        expect(res).to.have.status(200);
+        // expect(res.body).to.have.property('rideOffers').deep.include(driverRideOffers);
       });
     });
   });

@@ -1,16 +1,12 @@
 import jwt from 'jsonwebtoken';
 
-import models from '../models';
-
-const { Passenger, Driver } = models;
-
-// import data from '../data';
+import { Driver, Passenger } from '../models';
 
 export default class Authorization {
-  static generateToken(user) {
+  static authenticate(user, role = null) {
     const token = jwt.sign({
       id: user.id,
-      role: user.constructor.name,
+      role: role || user.constructor.name,
       email: user.email,
     }, process.env.SECRET, {
       expiresIn: '48h',
@@ -19,57 +15,62 @@ export default class Authorization {
     return token;
   }
 
-  // returns passenger or driver instance
   static verifyToken(token) {
-    let decoded = {};
+    let decoded;
     try {
       const payload = jwt.verify(token, process.env.SECRET);
-
       if (payload.role === 'Driver') {
-        const user = Driver.findOne({
-          email: payload.email,
-          id: payload.id,
-        });
+        const user = Driver.findOne({ id: payload.id, email: payload.email });
+        if (!user) {
+          throw Error('No driver account found');
+        }
         decoded = {
-          user,
-          token: payload,
+          user, payload,
         };
-        if (!user) throw Error();
       } else if (payload.role === 'Passenger') {
-        const user = Passenger.findOne({
-          email: payload.email,
-          id: payload.id,
-        });
+        const user = Passenger.findOne({ id: payload.id, email: payload.email });
+        if (!user) {
+          throw Error('No passenger account found');
+        }
         decoded = {
-          user,
-          token: payload,
+          user, payload,
         };
-        if (!user) throw Error();
       } else {
-        throw Error();
+        throw Error('Invalid token');
       }
     } catch (e) {
-      decoded.error = 'Cannot verify token here';
+      decoded = {
+        error: e.message,
+      };
     }
     return decoded;
   }
 
-  static verifyMiddleware(req, res, next) {
-    if (req.headers['x-access-token']) {
-      const token = req.headers['x-access-token'];
-      const decoded = Authorization.verifyToken(token);
-      if (!decoded.error) {
-        req.decoded = decoded;
-        next();
-      } else {
-        res.status(401).send({
-          msg: decoded.error,
-        });
-      }
-    } else {
-      res.status(401).send({
+  static verifyTokenMware(req, res, next) {
+    const token = req.headers['x-access-token'];
+    if (!token) {
+      return res.status(403).send({
         msg: 'No token',
       });
     }
+    const decoded = Authorization.verifyToken(token);
+
+    if (decoded.error) {
+      return res.status(401).send({
+        msg: decoded.error,
+      });
+    }
+
+    req.decoded = decoded;
+    return next();
+  }
+
+  static authorizeRole({ role }) {
+    return (req, res, next) => (req.decoded.payload.role === role && (() => { next(); })()) || res
+      .status(401)
+      .send({
+        msg: `Action not available for ${role === 'Driver' ? 'Passenger' : 'Driver'}`,
+      });
   }
 }
+

@@ -21,9 +21,9 @@ export default class RideOffer {
     seatsAvail, driverId,
   }) {
     const rideOffer = new RideOffer(
-      currentLocation, destination,
+      driverId, currentLocation, destination,
       startTime, route,
-      seatsAvail, driverId,
+      seatsAvail,
     );
     rideOffers.push(rideOffer);
     return rideOffer;

@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 const api = `/api/${process.env.VERSION}`;
 
-// to enable run a test, we need a signed in user
+
 // logs in and returns a token
 
 export async function passengerToken(passengerId) {
@@ -19,6 +19,7 @@ export async function passengerToken(passengerId) {
   const res = await chai.request(app)
     .post(`${api}/signin`)
     .send({ email, password });
+
   return res.body.token;
 }
 

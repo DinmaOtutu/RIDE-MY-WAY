@@ -1,4 +1,6 @@
-import { passengers, drivers, friends } from '../data';
+import { passengers, drivers } from '../data';
+
+import { friends } from '../data';
 
 export default class Friend {
   constructor(passengerId, driverId) {

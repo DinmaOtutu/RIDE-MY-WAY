@@ -5,9 +5,6 @@ export default function (datas, {
 }) {
   return datas.find((data) => {
     let found;
-/* gives you an array of objects, for each loops through
-   finds a particular data that matches in ALL then returns it or not 
-   */
 
     Object.keys(all).forEach((key) => {
       if (data[key] && data[key] === all[key]) {

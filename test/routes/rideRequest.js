@@ -26,7 +26,6 @@ const api = `/api/${process.env.VERSION}`;
 let token;
 let token2;
 
-// Immediately invoked function expression IIFE
 (async () => {
   token = await driverToken(passengerId);
   token2 = await passengerToken(existingDriverId);

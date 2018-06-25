@@ -1,8 +1,6 @@
-import models from '../models';
+import { Passenger, Driver } from '../models';
 
 import { Authorization } from '../middlewares';
-
-const { Passenger, Driver } = models;
 
 export default class Signin {
   static signin(req, res) {
@@ -13,7 +11,7 @@ export default class Signin {
     if (passenger) {
       return res.status(200).send({
         msg: 'Successfully logged in as passenger',
-        token: Authorization.generateToken(passenger),
+        token: Authorization.authenticate(passenger, 'Passenger'),
       });
     }
     const driver = Driver.findOne({
@@ -23,7 +21,7 @@ export default class Signin {
     if (driver) {
       return res.status(200).send({
         msg: 'Successfully logged in as driver',
-        token: Authorization.generateToken(driver),
+        token: Authorization.authenticate(driver, 'Driver'),
       });
     }
 
