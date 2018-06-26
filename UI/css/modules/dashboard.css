@@ -19,7 +19,7 @@
 .dashboard .summary .total-sum .count,
 .dashboard .summary .total-cash .count,
 .dashboard .summary .pending .count {
-    font-size: 1.5em;
+    font-size: 1.8em;
 }
 
 .dashboard .summary .total-sum {
@@ -35,10 +35,11 @@
 }
 
 .dashboard .summary.box-group .box {
-    min-height: 120px;
+    min-height: 100px;
+    min-width:20%;
     text-align: end;
     align-items: flex-end !important;
-    padding-right: 30px;
+    padding: 20px;
 }
 
 .dashboard .order-details {
