@@ -20,6 +20,7 @@ html {
     height: 100%;
     font-weight: 400;
     font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin:2%;
     font-size: 16px;
 }
 
@@ -574,8 +575,8 @@ hr {
     border: 2px solid #1b5e20;
     background-color: #1b5e20;
     color: #FFFFFF;
-    padding: 12px 50px;
-    font-size: 1.3em;
+    padding: 12px 40px;
+    font-size: 1.15em;
 }
 
 .home .landing button:hover,
