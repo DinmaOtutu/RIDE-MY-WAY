@@ -60,9 +60,10 @@
           </div>
         </div>
         <div class="sidenav-body">
-          <a href="#" class="offer-item active">Dashboard</a>
-          <a href="./user-order-history.html"  class="offer-item">rides</a>
-          
+            <a href="#" class="offer-item active">Dashboard</a>
+            <a href="./rides-confirmation.html"  class="offer-item">View Rides</a>
+            <a href="./rides.html"  class="offer-item">Confirmations</a>
+            <a href="./user-order-history.html"  class="offer-item">History</a> 
         </div>
       </div>
     </div>
@@ -73,46 +74,81 @@
         <input type="date" id="selectdate">
       </div>
       <div class="top">
-        <button class="btn btn-pri" id="offer-modal-btn">Request For A Ride</button>
+        <button class="btn btn-pri" id="offer-modal-btn">
+          Make a Ride Offer</button>
       </div>
       <div class="page-heading">
         <h2></h2>
-        <hr>
-      </div>
+        <hr class="w-90">
+      </div><br><br>
+      <div class="main-wrapper auth-wrapper">
+        <div class="auth">
+          <div class="content">
       <div class ="offer-create">
-      <div class="content" id="one">
-          <form action="./rides-confirmation.html">
+      
+            <form action="./user-dashboard.html">
             <div class="form-input">
               <label for="location"> Current Location</label>
-              <input type="text" required id="locationz" name="location" value="" />
+              <input type="text" required id="location" name="location" value="" />
             </div>
             
             <div class="form-input">
                 <label for="destination"> Destination</label>
-                <input type="text" required id="destine" name="Destination" value="" />
+                <input type="text" required id="Destination" name="Destination" value="" />
               </div>
     
             <div class="form-input">
-              <label for="depature">Departure Time</label>
-              <input type="text" required id="departure" name="departure" value=""  />
+              <label for="startTime">Start Time</label>
+              <input type="text" required id="start-time" name="start-time" value=""  />
             </div>
-
             <div class="form-input">
-                
-                <button class="btn btn-pri" id="offer-modal-btn">Create</button>
-                
-                        </div>
+                <label for="Seats"> Seats Available</label>
+                <input type="text" required id="Seats" name="Seats" value="" />
+              </div>
+             
+              <div class="form-input">
+                  <label for="Routes"> Routes</label>
+                  <input type="text" required id="Routes" name="Routes" value="" />
+              </div>
+           
+
+              <div class="form-input">
+                  <!-- <a href="./dashboard.html"  class="offer-item"> -->
+                  <button class="btn btn-pri" id="myBtn">Create</button>
+                </div>
+                  <!-- </a> -->
+                   <!-- The Modal -->
+              <div id="myModal" class="modal">
+  
+                <!-- Modal content -->
+                <div class="modal-header">
+                <div class="modal-content">
+                <div class="modal-body">
+                <span class="close">&times;</span>
+                </div>
+                <h3> Thank you, an offer has been created and a notification will be sent to you!</h3>
+                </div>
+                <div class="modal-footer">
+                </div>
+  
+              </div>		
+                          </div>
+        
           </form>
+          
           </div>
           </div>
           </div>
           
   </div>
+    </div>
+</div>
+</body>
   
   <div class="footer">
     <p>&copy; 2018. Nma Otutu. </p>
   </div>
-  
+  <script src="./js/dashboard.js"></script>
 </body>
 
 </html>

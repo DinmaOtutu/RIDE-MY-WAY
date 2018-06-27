@@ -20,7 +20,7 @@ html {
     height: 100%;
     font-weight: 400;
     font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
-    margin:2%;
+    margin:2.5%;
     font-size: 16px;
 }
 
@@ -170,6 +170,12 @@ a:focus,
 a.active {
     transition: color 0.5s;
     color: #4CAF50;
+}
+
+
+.change:active {
+    transition: color 0.5s;
+    color: white;
 }
 
 hr {
@@ -360,6 +366,12 @@ hr {
 
 .box-group .box {
     margin-bottom: 20px;
+}
+
+.offer-create{
+    text-align: left;
+    width:100%;
+    margin:2% auto;
 }
 
 .box-group .auth,

@@ -13,17 +13,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #449d48;
 }
 
 .dashboard .summary .total-sum .count,
 .dashboard .summary .total-cash .count,
 .dashboard .summary .pending .count {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .dashboard .summary .total-sum {
-    color: #ffa100
+    color: white;
 }
 
 .dashboard .summary .total-cash {
@@ -35,10 +35,11 @@
 }
 
 .dashboard .summary.box-group .box {
-    min-height: 120px;
+    max-height: 50px;
+    min-width:10%;
     text-align: end;
-    align-items: flex-end !important;
-    padding-right: 30px;
+    align-items: center !important;
+    padding: 20px;
 }
 
 .dashboard .order-details {
