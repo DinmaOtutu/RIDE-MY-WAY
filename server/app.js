@@ -1,7 +1,6 @@
 import express from 'express';
-import * as v1 from './routes/v1';
+import v1 from './routes/v1';
 
-// other versions can be added
 const VERSIONS = {
   v1,
 };
@@ -12,7 +11,6 @@ const urlParser = express.urlencoded({
 
 const jsonParser = express.json();
 
-// initiating express
 const app = express();
 
 app
@@ -20,20 +18,18 @@ app
   .use(jsonParser);
 
 // attach versions
-Object.keys(VERSIONS).forEach((v) => {
-  // non-api specific router 
+Object.keys(VERSIONS).forEach((version) => {
+  // non-api specific router
   const router = express.Router();
 
   // all routes for specific version
-  const routes = VERSIONS[v];
+  const routesFunc = VERSIONS[version];
 
   // attach routes
-  Object.keys(routes).forEach((routeId) => {
-    routes[routeId](router);
-  });
+  routesFunc(router);
 
   app
-    .use(`/api/${v}`, router);
+    .use(`/api/${version}`, router);
 
   // define catchall on extraneous request
   router.all('/', (req, res) => {
