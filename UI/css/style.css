@@ -7,7 +7,6 @@
 @import url('./modules/sidenavigation.css');
 @import url('./modules/boxs.css');
 @import url('./modules/rides.css');
-@import url('./modules/ridez.css');
 @import url('./modules/modals.css');
 @import url('./modules/tables.css');
 @import url('./modules/oder-history.css');
@@ -21,6 +20,7 @@ html {
     height: 100%;
     font-weight: 400;
     font-family: Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin:2.5%;
     font-size: 16px;
 }
 
@@ -30,7 +30,7 @@ body {
     min-height: 100%;
     flex-direction: column;
     color: #333;
-    background:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./images/bg.jpeg") no-repeat center center;
+    background:  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./images/bg.JPEG") no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     justify-content: space-between;
@@ -170,6 +170,12 @@ a:focus,
 a.active {
     transition: color 0.5s;
     color: #4CAF50;
+}
+
+
+.change:active {
+    transition: color 0.5s;
+    color: white;
 }
 
 hr {
@@ -362,6 +368,12 @@ hr {
     margin-bottom: 20px;
 }
 
+.offer-create{
+    text-align: left;
+    width:100%;
+    margin:2% auto;
+}
+
 .box-group .auth,
 .box-group .order-confirmation {
     font-family: "Nunito", sans-serif;
@@ -431,6 +443,10 @@ hr {
 
 .user .content-wrapper {
     margin-top: 70px;
+}
+.inline {
+    display: inline;
+    flex-direction: row;
 }
 
 .user .navbar {
@@ -571,8 +587,8 @@ hr {
     border: 2px solid #1b5e20;
     background-color: #1b5e20;
     color: #FFFFFF;
-    padding: 12px 50px;
-    font-size: 1.3em;
+    padding: 12px 40px;
+    font-size: 1.15em;
 }
 
 .home .landing button:hover,
@@ -677,6 +693,3 @@ hr {
         width: 40%;
     }
 }
-
-
-
