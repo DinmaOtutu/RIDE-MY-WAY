@@ -1,5 +1,14 @@
-export Signup from './signup';
+import requestRide from './requestRide';
 
-export Signin from './signin';
+import rideOffer from './rideOffer';
 
-export Ride from './ride';
+import createRide from './createRide';
+
+import createRideRequest from './createRideRequest';
+
+export default {
+  requestRide,
+  rideOffer,
+  createRide,
+  createRideRequest,
+};

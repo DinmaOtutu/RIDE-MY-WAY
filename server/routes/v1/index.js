@@ -1,6 +1,9 @@
-import { Signup, Signin, Ride } from '../../controllers';
+import controllers from '../../controllers';
 
-import { Authorization } from '../../middlewares';
+const {
+  requestRide, rideOffer,
+  createRide, createRideRequest,
+} = controllers;
 
 export default (app) => {
   // welcome route
@@ -8,25 +11,12 @@ export default (app) => {
     res.status(200).send({
       msg: 'Welcome to ride-my-way',
     }));
-
-  // routes for users sign up
-  app.post('/signup', Signup.signup);
-
-  // routes for users sign in
-  app.post('/signin', Signin.signin);
+  app.get('/api/v1/rides/:rideId', requestRide);
 
   // route for getRides
-  app.get('/rides', Authorization.verifyTokenMware, Ride.getRides);
+  app.get('/api/v1/rides', rideOffer);
 
-  // route for getSingleRideOffer
-  app.get('/rides/:rideId', Authorization.verifyTokenMware, Ride.getSingleRide);
+  app.post('/api/v1/rides', createRide);
 
-  // route for createRideOffer
-  app.post('/rides', Authorization.verifyTokenMware, Ride.createRide);
-
-  // route for getSingleRideRequest
-  // app.post('/rides/requests/:rideRequestId', Authorization.verifyTokenMware, Authorization.authorizeRole({ role: 'Driver' }), Ride.getSingleRide);
-
-  // route for createRideRequest
-  app.post('/rides/:rideId/requests', Authorization.verifyTokenMware, Authorization.authorizeRole({ role: 'Driver' }), Ride.request);
+  app.post('/api/v1/rides/:rideId/request', createRideRequest);
 };

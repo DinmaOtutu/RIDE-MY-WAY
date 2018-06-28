@@ -1,14 +1,5 @@
 {
     "presets": [
         "env"
-    ],
-    
-    "plugins": [
-        
-        "transform-export-extensions",
-        "babel-plugin-add-module-exports",
-        "babel-plugin-transform-object-rest-spread",
-        "transform-runtime"
     ]
-      
 }
