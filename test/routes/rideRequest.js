@@ -14,8 +14,7 @@ const { expect } = chai;
 
 chai.use(chaiHttp);
 
-const {
-  existingDriverId, passengerId,
+const { passengerId,
   nonExistentRideId, availRideId,
   unavailRideId, validPassengerRequest,
   driverRequest, requestUnavailSeat,
@@ -28,21 +27,10 @@ let token2;
 
 (async () => {
   token = await driverToken(passengerId);
-  token2 = await passengerToken(existingDriverId);
 })();
 
 suite('Tests for rideRequest route - /api/version/rides/:rideId/requests', () => {
   suite('POST /api/version/rides/:rideId/requests', () => {
-    test('Route should not be available to drivers - status 401', async () => {
-      const res = await chai.request(app)
-        .post(`${api}/rides/${availRideId}/requests`)
-        .send(driverRequest)
-        .set('x-access-token', token2);
-
-      expect(res).to.have.status(401);
-      expect(res.body).to.have.property('msg').a('string');
-    });
-
     test('Expect 400 on request for unavailable seat number', async () => {
       const res = await chai.request(app)
         .post(`${api}/rides/${availRideId}/requests`)

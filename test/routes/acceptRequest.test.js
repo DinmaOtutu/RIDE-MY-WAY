@@ -8,7 +8,7 @@ import app from '../../server/app';
 
 import { acceptRequest } from '../utils/data.json';
 
-import { passengerToken, driverToken } from '../utils/signin.setup';
+import { passengerToken } from '../utils/signin.setup';
 
 const { expect } = chai;
 
@@ -17,21 +17,19 @@ const api = `/api/${process.env.VERSION}`;
 chai.use(chaiHttp);
 
 const {
-  driverId, passengerFriendId,
+  passengerFriendId,
   newRideOffer, offerRequest,
 } = acceptRequest;
 
-let token;
 let token2;
 
 (async () => {
   token2 = await passengerToken(passengerFriendId);
-  token = await driverToken(driverId);
 })();
 
 suite('Tests for acceptRequest route - /api/version/rides/requests/:requestId', () => {
   suite('PUT /api/version/rides/requests/:requestId', () => {
-    test.skip('Expect success on valid request by driver', async () => {
+    test('Expect success on valid request by driver', async () => {
       // keep server open
       const requester = chai.request(app).keepOpen();
 

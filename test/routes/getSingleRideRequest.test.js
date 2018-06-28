@@ -8,7 +8,7 @@ import app from '../../server/app';
 
 import { getSingleRideRequest } from '../utils/data.json';
 
-import { passengerToken, driverToken } from '../utils/signin.setup';
+import { passengerToken } from '../utils/signin.setup';
 
 const { expect } = chai;
 
@@ -18,7 +18,7 @@ chai.use(chaiHttp);
 
 const {
   rideRequest, rideRequest: { rideRequestId },
-  driverId, existingPassengerId,
+ existingPassengerId,
   nonExistentRequestId,
   otherDriverRequestId,
 } = getSingleRideRequest;

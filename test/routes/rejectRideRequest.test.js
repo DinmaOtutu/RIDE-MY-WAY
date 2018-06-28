@@ -8,7 +8,7 @@ import app from '../../server/app';
 
 import { rejectRequest } from '../utils/data.json';
 
-import { passengerToken, driverToken } from '../utils/signin.setup';
+import { passengerToken } from '../utils/signin.setup';
 
 const { expect } = chai;
 
@@ -17,21 +17,19 @@ const api = `/api/${process.env.VERSION}`;
 chai.use(chaiHttp);
 
 const {
-  driverId, passengerFriendId,
+  passengerFriendId,
   newRideOffer, offerRequest,
 } = rejectRequest;
 
-let token;
 let token2;
 
 (async () => {
   token2 = await passengerToken(passengerFriendId);
-  token = await driverToken(driverId);
 })();
 
 suite('Tests for rejectRequest route - /api/version/rides/requests/:requestId', () => {
   suite('PUT /api/version/rides/requests/:requestId', () => {
-    test.skip('Expect status 200 with updated resource on valid request by driver', async () => {
+    test.skip('Expect status 200 with updated resource on valid request by passenger', async () => {
       // keep server open
       const requester = chai.request(app).keepOpen();
 
@@ -39,7 +37,7 @@ suite('Tests for rejectRequest route - /api/version/rides/requests/:requestId', 
       const res = await requester
         .post(`${api}/version/rides`)
         .send(newRideOffer)
-        .set('x-access-token', token);
+        .set('x-access-token', token2);
 
       expect(res).to.have.status(201);
       expect(res.body).to.have.property('rideOffer');
@@ -63,7 +61,7 @@ suite('Tests for rejectRequest route - /api/version/rides/requests/:requestId', 
       const res3 = await requester
         .put(`${api}/rides/requests/${rideRequestId}`)
         .send({ accept: false })
-        .set('x-access-header', token);
+        .set('x-access-header', token2);
 
       expect(res3).to.have.status(200);
       expect(res3.body).to.have.property('rideRequest');

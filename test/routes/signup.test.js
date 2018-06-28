@@ -16,14 +16,6 @@ const {
   },
 } = signup;
 
-const {
-  drivers: {
-    gudDriver, incompleteDriver,
-    badMailDriver,
-    badPhoneDriver,
-  },
-} = signup;
-
 const { expect } = chai;
 
 chai.use(chaiHttp);
@@ -70,42 +62,3 @@ suite('Tests for signup route - /api/version/signup', () => {
         expect(res.body.passenger.email).equal(gudPassenger.email);
       });
     });
-
-    suite('New driver account', () => {
-      test('Expect status 400 for invalid driver email', async () => {
-        const res = await chai.request(app)
-          .post(`${api}/signup`)
-          .send(badMailDriver);
-        expect(res).to.have.status(400);
-        expect(res.body).to.have.keys('msg');
-      });
-
-      test('Expect status 400 for incomplete driver account params', async () => {
-        const res = await chai.request(app)
-          .post(`${api}/signup`)
-          .send(incompleteDriver);
-
-        expect(res.body).to.have.keys('msg');
-        expect(res).to.have.status(400);
-      });
-
-      test('Expect status 400 for invalid phone number', async () => {
-        const res = await chai.request(app)
-          .post(`${api}/signup`)
-          .send(badPhoneDriver);
-
-        expect(res).to.have.status(400);
-        expect(res.body).to.have.property('msg');
-      });
-
-      test('Expect driver instance to be returned on valid parameters', async () => {
-        const res = await chai.request(app)
-          .post(`${api}/signup`)
-          .send(gudDriver);
-        expect(res).to.have.status(201);
-        expect(res.body).to.property('driver');
-        expect(res.body.driver.carModel).to.equal(gudDriver.carModel);
-      });
-    });
-  });
-});

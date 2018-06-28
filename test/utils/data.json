@@ -22,51 +22,8 @@
         "phone": "000",
         "password": "39-8790"
       }
-    },
-    "drivers": {
-      "incompleteDriver": {
-        "email": "hello@world.com",
-        "name": "helloWorld",
-        "phone": "30808",
-        "homeAddress": "helloWorldAgain"
-      },
-      "gudDriver": {
-        "email": "hello@world.com",
-        "name": "helloWorld",
-        "phone": "30808",
-        "homeAddress": "helloWorldAgain",
-        "password": "uncrackable",
-        "carModel": "Toyota Camry",
-        "driverLicense": "ABNg897i8",
-        "plateNumber": "AB-678-89"
-      },
-      "badMailDriver": {
-        "email": "helloWorld",
-        "name": "helloWorld",
-        "phone": "30808",
-        "homeAddress": "helloWorldAgain",
-        "password": "uncrackable",
-        "carModel": "Toyota Camry",
-        "driverLicense": "ABNg897i8",
-        "plateNumber": "AB-678-89"
-      },
-      "badPhoneDriver": {
-        "email": "hello@worlds.com",
-        "name": "helloWorlds",
-        "phone": "scammer",
-        "homeAddress": "helloWorldAgain",
-        "password": "uncrackable",
-        "carModel": "Toyota Camry",
-        "driverLicense": "ABNg897i8",
-        "plateNumber": "AB-678-089"
-      }
-    }
-  },
+    }, 
   "signin": {
-    "existingDriver": {
-      "email": "hello2@world.com",
-      "password": "2799ue="
-    },
     "existingPassenger": {
       "email": "hello@passenger.com",
       "password": "78766y-t="
@@ -76,57 +33,12 @@
       "password": "thief.noexists"
     }
   },
-  "getFriends": {
-    "existingFriends": [
-      {
-        "passengerId": 1,
-        "friends": [
-          {
-            "email": "hello2@world.com",
-            "name": "helloDriver2",
-            "phone": "02189789083",
-            "homeAddress": "No 22 Shomolu street",
-            "carModel": "Land Rover Discovery Sport",
-            "driverLicense": "79987UH87",
-            "plateNumber": "AP 214-YEN"
-          },
-          {
-            "email": "hello@world.com",
-            "name": "helloDriver",
-            "phone": "02189789082",
-            "homeAddress": "No 21 Shomolu street",
-            "carModel": "Maruti Suzuki Swift",
-            "driverLicense": "12AD79789",
-            "plateNumber": "AE 192-KPU"
-          }
-        ]
-      },
-      {
-        "driverId": 2,
-        "friends": [
-          {
-            "email": "hello@passenger.com",
-            "name": "helloPassenger1",
-            "phone": "08067877667",
-            "password": "78766y-t="
-          },
-          {
-            "email": "hello@passenger2.com",
-            "name": "helloPassenger2",
-            "phone": "08067877669",
-            "password": "78765y-t="
-          }
-        ]
-      }
-    ]
-  },
   "getRideOffers": {
     "passengerId": 1,
-    "existingDriverId": 3,
     "rideOffers": [
       {
         "id": 1,
-        "driverId": 2,
+        "passengerId": 2,
         "currentLocation": "Ogudu",
         "destination": "Oshodi",
         "startTime": "2018-06-22T03:36:28.476Z",
@@ -139,7 +51,7 @@
       },
       {
         "id": 2,
-        "driverId": 2,
+        "passengerId": 2,
         "currentLocation": "Shomolu",
         "destination": "Ikeja",
         "startTime": "2018-06-23T03:36:28.476Z",
@@ -151,7 +63,7 @@
       },
       {
         "id": 4,
-        "driverId": 1,
+        "passengerId": 1,
         "currentLocation": "Festac",
         "destination": "Ijayi",
         "startTime": "2018-06-22T03:45:26.231Z",
@@ -162,7 +74,7 @@
           1
         ]
       }
-    ], "driverRideOffers": [
+    ], "passengerRideOffers": [
       {
         "id": 3,
         "driverId": 3,
@@ -191,7 +103,7 @@
     },
     "invalidRideOffer": {
       "id": 3,
-      "driverId": 3,
+      "passengerId": 3,
       "currentLocation": "Ojo",
       "destination": "Ajah",
       "startTime": "2018-06-22T03:45:26.231Z",
@@ -205,7 +117,7 @@
     }
   },
   "createRideOffer": {
-    "driverId": 3,
+    "passengerId": 3,
     "newRideOffer": {
       "currentLocation": "Gbagada",
       "destination": "Obalende",
@@ -218,7 +130,7 @@
     "existingPassengerId": 2
   },
   "rideRequest": {
-    "existingDriverId": 2,
+    "existinPassengerId": 2,
     "passengerId": 1,
     "nonExistentRideId": 12,
     "availRideId": 4,
@@ -229,11 +141,6 @@
       "departTime": "2018-01-21T03:46:28.476Z",
       "seatNumber": 7
     },
-    "driverRequest": {
-      "passengerLocation": "Agege",
-      "destination": "Voks",
-      "departTime": "2018-01-21T03:46:28.476Z"
-    },
     "requestUnavailSeat": {
       "passengerLocation": "Agege",
       "destination": "Ojota",
@@ -242,7 +149,7 @@
     }
   },
   "getRideRequests": {
-    "driverId": 2,
+    "passengerId": 2,
     "existingPassengerId": 3,
     "rideRequests": [
       {
@@ -275,16 +182,16 @@
       "departTime": "2018-06-22T03:48:57.401Z",
       "seatNumber": null
     },
-    "driverId": 2,
+    "passengerId": 2,
     "existingPassengerId": 3,
     "nonExistentRequestId": 10,
     "otherDriverRequestId": 2
   },
   "acceptRequest": {
     "passengerFriendId": 3,
-    "driverId": 3,
+    "passengerId": 3,
     "newRideOffer": {
-      "driverId": 3,
+      "passengerId": 3,
       "currentLocation": "Gbagada",
       "destination": "Obalende",
       "startTime": "2018-01-21T03:46:28.476Z",
@@ -302,7 +209,7 @@
   },
   "rejectRequest": {
     "passengerFriendId": 2,
-    "driverId": 1,
+    "passengerId": 1,
     "newRideOffer": {
       "driverId": 3,
       "currentLocation": "Freedom Park",

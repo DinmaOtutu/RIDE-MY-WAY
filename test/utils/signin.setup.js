@@ -2,7 +2,7 @@ import chai from 'chai';
 
 import chaiHttp from 'chai-http';
 
-import { passengers, drivers } from '../../server/data';
+import { passengers } from '../../server/data';
 
 import app from '../../server/app';
 
