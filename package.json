@@ -6,9 +6,10 @@
   "scripts": {
     "test": "nyc mocha",
     "lint-all": "eslint \"server/**/*.js\" app.js",
-    "start:serve": "nodemon -x \"node -r dotenv/config ./node_modules/babel-cli/bin/babel-node ./server/bin/www\"",
+    "start:serve": "nodemon -x \"node -r dotenv/config ./node_modules/babel-cli/bin/babel-node ./server/app.js\"",
     "start2": "nodemon -r dotenv/config server/bin/bootstrap",
-    "heroku:start": "node server/bin/bootstrap"
+    "server": "babel-node server/app.js",
+    "heroku:start": "babel-node server/app.js"
   },
   "repository": {
     "type": "git",

@@ -1,11 +1,15 @@
-import requestRide from '../model/requestRide';
+import rideOffers from '../model/rideOffers';
 
-export const getRideRequest = (req, res) => {
-  const id = requestRide.find(ride => ride.id === parseInt
-  (req.params.id));
-  if (!id)
-    {return  res.status(400).json({
-    message: 'Cannot get ride request',
-      request: requestRide,
-    });}
+export default (req, res) => {
+  const rideOffer = rideOffers
+    .find(offer =>
+      offer.id === parseInt(req.params.rideId, 10));
+  if (!rideOffer) {
+    return res.status(400).json({
+      message: 'Cannot get ride request',
+    });
+  }
+  return res.status(200).json({
+    rideOffer,
+  });
 };
