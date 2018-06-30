@@ -1,14 +1,14 @@
-import requestRide from './requestRide';
+import getRide from './getRide';
 
-import rideOffer from './rideOffer';
+import getRides from './getRides';
 
 import createRide from './createRide';
 
 import createRideRequest from './createRideRequest';
 
 export default {
-  requestRide,
-  rideOffer,
+  getRide,
+  getRides,
   createRide,
   createRideRequest,
 };

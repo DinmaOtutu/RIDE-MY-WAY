@@ -1,6 +1,9 @@
 import rideOffers from '../model/rideOffers';
 
-export default (req, res) => {
+export default (req, res, next) => {
+  if (!+req.params.rideId) {
+    return next('route');
+  }
   const rideOffer = rideOffers
     .find(offer =>
       offer.id === parseInt(req.params.rideId, 10));
