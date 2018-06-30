@@ -2,7 +2,10 @@ import rideRequests from '../model/rideRequests';
 
 import rideOffers from '../model/rideOffers';
 
-export default (req, res) => {
+export default (req, res, next) => {
+  if (!+req.params.rideId) {
+    return next('route');
+  }
   const type = (param, typeOf) => {
     if (typeof param !== typeOf) {
       throw Error(`${param} should be type ${typeOf}`);
@@ -23,9 +26,9 @@ export default (req, res) => {
     type(destination, 'string');
     type(depart, 'string');
     type(date, 'string');
-  } catch (e) {
+  } catch (error) {
     return res.status(400).json({
-      message: e.message,
+      message: error.message,
     });
   }
 

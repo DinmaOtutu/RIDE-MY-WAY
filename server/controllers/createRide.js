@@ -19,9 +19,9 @@ export default (req, res) => {
     type(destination, 'string');
     type(depart, 'string');
     type(date, 'string');
-  } catch (e) {
+  } catch (error) {
     return res.status(400).json({
-      message: e.message,
+      message: error.message,
     });
   }
 
