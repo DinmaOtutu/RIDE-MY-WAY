@@ -8,7 +8,8 @@
     "lint-all": "eslint \"server/**/*.js\" app.js",
     "start:serve": "nodemon -x \"node -r dotenv/config -r babel-register ./server/www.js\"",
     "server": "node -r dotenv/config -r babel-register server/www.js",
-    "heroku:start": "node -r babel-register ./server/www.js"
+    "heroku:start": "node -r babel-register ./server/www.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
