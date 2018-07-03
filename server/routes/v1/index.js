@@ -1,20 +1,20 @@
 import controllers from '../../controllers';
 
 const {
-  requestRide, rideOffer,
+  getRide, getRides,
   createRide, createRideRequest,
 } = controllers;
 
 export default (app) => {
   // welcome route
-  app.get('/', (req, res) =>
+  app.get('/api/v1', (req, res) =>
     res.status(200).send({
-      msg: 'Welcome to ride-my-way',
+      message: 'Welcome to ride-my-way',
     }));
-  app.get('/api/v1/rides/:rideId', requestRide);
+  app.get('/api/v1/rides/:rideId', getRide);
 
   // route for getRides
-  app.get('/api/v1/rides', rideOffer);
+  app.get('/api/v1/rides', getRides);
 
   app.post('/api/v1/rides', createRide);
 

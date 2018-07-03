@@ -19,12 +19,4 @@ app.get('/', (req, res) => {
   res.redirect(`api/${process.env.VERSION}`);
 });
 
-const port = process.env.PORT || 8000;
-
-app.set('port', port);
-
-app.listen(port, () => {
-  console.log('App is running on port ');
-});
-
 export default app;

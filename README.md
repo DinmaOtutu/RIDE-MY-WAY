@@ -2,7 +2,8 @@
 
 This is an application that allows user to request for a ride, and the driver accepts or rejects the request.
 
-[![Build Status](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY.svg?branch=develop)](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY)  
+[![Build Status](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY.svg?branch=develop)](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY) 
+[![Coverage Status](https://coveralls.io/repos/github/DinmaOtutu/RIDE-MY-WAY/badge.svg?branch=develop)](https://coveralls.io/github/DinmaOtutu/RIDE-MY-WAY?branch=develop) 
 
 ## Tools
 * NodeJs - Runtime Environment

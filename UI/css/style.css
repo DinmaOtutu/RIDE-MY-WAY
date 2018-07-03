@@ -534,7 +534,7 @@ hr {
 
 @-webkit-keyframes pop-in {
     0% {
-        opacity: 0;
+          opacity: 0;
         -webkit-transform: translateY(-4rem);
         transform: translateY(-4rem);
     }
