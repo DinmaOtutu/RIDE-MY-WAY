@@ -1,5 +1,5 @@
 import express from 'express';
-import routesFunction from './routes/v1';
+import routesFunction from '../dbServer/routes/v1';
 
 const urlParser = express.urlencoded({
   extended: true,
