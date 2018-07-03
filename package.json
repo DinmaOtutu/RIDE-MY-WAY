@@ -6,10 +6,10 @@
   "scripts": {
     "test": "nyc mocha",
     "lint-all": "eslint \"server/**/*.js\" app.js",
-    "start:serve": "nodemon -x \"node -r dotenv/config -r babel-register ./server/www.js\"",
+    "start:serve": "npm run migrate && nodemon -x \"node -r dotenv/config -r babel-register ./server/www.js\"",
     "server": "node -r dotenv/config -r babel-register server/www.js",
-    "heroku:start": "node -r babel-register ./server/www.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "migrate": "node -r babel-register -r dotenv/config dbServer/models"
+    "coverage": "nyc report --reporter=text-lcov | coveralls
   },
   "repository": {
     "type": "git",
@@ -42,12 +42,15 @@
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-preset-env": "^1.7.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-register": "^6.26.0",
+    "bcrypt": "^2.0.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
+    "pg": "^7.4.3",
     "source-map": "^0.7.3"
   }
 }
