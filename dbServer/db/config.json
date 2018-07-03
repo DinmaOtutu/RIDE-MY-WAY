@@ -1,0 +1,11 @@
+{
+    "development": {
+        "use_env_variable": "RIDE_MY_WAY_DEV"
+    },
+    "production": {
+        "use_env_variable": "RIDE_MY_WAY_PROD"
+    },
+    "test": {
+        "use_env_variable": "RIDE_MY_WAY_TEST"
+    }
+}
