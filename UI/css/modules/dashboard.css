@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:white;
+    background-color:#4CAF50;
 }
 
 .dashboard .summary .total-sum .count,
@@ -23,7 +23,7 @@
 }
 
 .dashboard .summary .total-sum {
-    color: black
+    color: white;
 }
 
 .dashboard .summary .pending {
