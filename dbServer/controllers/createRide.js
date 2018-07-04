@@ -30,8 +30,7 @@ export default [
         values: [departureDate, departureTime],
       };
       return client.query(query1, (error1, response1) => {
-        // if (error1) return next(error1);
-        if (error1) throw error1;
+        if (error1) return next(error1);
         if (response1.rows.length) {
           const uniqueError = Error(`Another ride already scheduled for ${departureTime} on ${departureDate}`);
           uniqueError.status = 409;
