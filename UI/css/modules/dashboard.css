@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color:#4CAF50;
+    background-color:white;
 }
 
 .dashboard .summary .total-sum .count,
@@ -23,7 +23,7 @@
 }
 
 .dashboard .summary .total-sum {
-    color: white
+    color: black
 }
 
 .dashboard .summary .pending {
@@ -31,10 +31,9 @@
 }
 
 .dashboard .summary.box-group .box {
-    max-height: 100px;
-    text-align: end;
-    align-items: flex-end !important;
-    padding-right: 30px;
+    max-height: 80px;
+    text-align: center;
+    padding: 10px;
 }
 
 .dashboard .order-details {
