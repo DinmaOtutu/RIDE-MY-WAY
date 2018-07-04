@@ -4,14 +4,16 @@ export default {
     notNull.errors = [];
     return (req, res, next) => {
       datas.forEach((data) => {
-        console.log(req.body[data]);
         if (req.body[data] == null) {
-          notNull.errors.push(`'${data}' cannot be null`);
+          notNull.errors.push(`'${data}' please fill up all forms`);
         }
       });
-      return notNull.errors.length
-        ? next(notNull)
-        : next();
+      if (notNull.errors.length) {
+        next(notNull);
+        notNull.errors.splice(0);
+        return;
+      }
+      next();
     };
   },
 };

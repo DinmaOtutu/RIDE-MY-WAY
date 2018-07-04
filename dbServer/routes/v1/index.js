@@ -32,9 +32,9 @@ export default (app) => {
 
   app.post('/api/v1/users/rides', auth.verifyTokenMware, createRide);
 
-  // app.get('/api/v1/users/rides/:rideId/requests', auth.verifyTokenMware, getRequests);
+  app.get('/api/v1/users/rides/:rideId/requests', auth.verifyTokenMware, getRequests);
 
-  // app.put('/api/v1/users/rides/:rideId/requests/:requestId', auth.verifyTokenMware, replyRequest);
+  app.put('/api/v1/users/rides/:rideId/requests/:requestId', auth.verifyTokenMware, replyRequest);
 
   app.use(errorHandler);
 };
