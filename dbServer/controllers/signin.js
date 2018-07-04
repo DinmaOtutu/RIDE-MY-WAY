@@ -4,7 +4,7 @@ import auth from '../middlewares/auth';
 
 import encrypt from '../middlewares/encrypt';
 
-export default (res, req, next) => {
+export default (req, res, next) => {
   const query = {
     text: ' select id, firstname, lastname,email, password from users where email = $1 LIMIT 1',
     values: [
@@ -14,7 +14,7 @@ export default (res, req, next) => {
 
   db.query(query, (error, response) => {
     if (error) return next(error);
-    const user = response.row[0];
+    const user = response.rows[0];
     if (!response.rows.length) {
       return res.status(401).send({
         message: 'incorrect email',

@@ -1,4 +1,4 @@
-// import getRide from './getRide';
+import getRide from './getRide';
 
 import signin from './signin';
 
@@ -11,7 +11,7 @@ import getRides from './getRides';
 // import createRideRequest from './createRideRequest';
 
 export default {
-  //getRide,
+  getRide,
   getRides,
  // createRide,
  // createRideRequest,
