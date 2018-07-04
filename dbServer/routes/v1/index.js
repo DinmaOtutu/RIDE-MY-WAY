@@ -28,9 +28,9 @@ export default (app) => {
 
   app.get('/api/v1/rides/:rideId', auth.verifyTokenMware, getRide);
 
-  //app.post('/api/v1/rides/:rideId/requests', auth.verifyTokenMware, createRideRequest);
+  app.post('/api/v1/rides/:rideId/requests', auth.verifyTokenMware, createRideRequest);
 
-  //app.post('/api/v1/users/rides', auth.verifyTokenMware, createRide);
+  app.post('/api/v1/users/rides', auth.verifyTokenMware, createRide);
 
   // app.get('/api/v1/users/rides/:rideId/requests', auth.verifyTokenMware, getRequests);
 
