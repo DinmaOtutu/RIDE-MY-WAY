@@ -6,15 +6,15 @@ import signup from './signup';
 
 import getRides from './getRides';
 
-// import createRide from './createRide';
+import createRide from './createRide';
 
-// import createRideRequest from './createRideRequest';
+import createRideRequest from './createRideRequest';
 
 export default {
   getRide,
   getRides,
- // createRide,
- // createRideRequest,
+  createRide,
+  createRideRequest,
   signup,
   signin,
   // getRequests,
