@@ -9,63 +9,75 @@
   <title>Ride My Way</title>
 </head>
 
-<body class="user">
+<body class="driver no-date">
   <div class="header">
-    <div class="navbar white-navbar">
-      <div class="page-title">
-        <h3>
-          <a href="../index.html">RIDE-MY-WAY</a>
-        </h3>
+    <div class="navbar">
+      <div class="offer-control d-none-md">
+        <a href="#sidenav" class="d-none-md">
+          <img src="./css/images/toggler.png" alt="toggler">
+        </a>
       </div>
-     
-      <div class="navlinks">
+      <div class="page-title d-flex-md">
+        <div class="date">
+          <h2>Hello Dinma</h2>
+        </div>
+      </div>
+      <div class="navlinks driver-nav">
         <div class="dropdown notification">
           <a href="#" id="dropdown-toggler" class="link">
             <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
           </a>
-         
           <div class="dropdown-content driver-dropdown-content" id="dropdown-content">
-                <a href="#" class="read">User just made a ride request</a>
-                <a href="#">User just made a ride request</a>
-                <a href="#" class="read">User declined an order</a>
-                <a href="#">User just made a ride request</a>
-                <a href="#">user accepted a ride request</a>
-              </div>
-        </div>
-
-        <div class="user-info">
-          <div class="dropdown">
-            <a href="#" class="link circle circle-click">
-              <div class="username-circle circle-click">
-                <p class="circle-click">D&#9663;</p>
-              </div>
-            </a>
-            <div class="dropdown-content profile profile-dropdown-content" id="dropdown-content">
-              <a href="./user-offer.html" id="user-offer">offer</a>
-              <a href="./user-order-history.html" id="user-order-history">Order History</a>
-              <a href="../index.html" id="logout">Logout</a>
-            </div>
+            <a href="#" class="read">User just made a ride request</a>
+            <a href="#">User just made a ride request</a>
+            <a href="#" class="read">User declined an order</a>
+            <a href="#">User just made a ride request</a>
+            <a href="#">user accepted a ride request</a>
           </div>
-
-          <p class="hide d-lg">Dinma</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="main-wrapper" id="has-modal">
-    <div class="order-confirmation">
-      <div id="one">
-        <h2>Current Available Rides</h2>
-        <hr>
-        <div class="order-summary">
-          <div>
-            
-            <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp; | ROUTE- OGUDU RD<BR>
-                &nbsp; &nbsp;<a href="#"> <br>
-                  <a href="./user-order-details.html"><button class="btn btn-pri change">View Details</button></a>&nbsp; &nbsp;9.00AM</h3>
+  <div class="content" id="has-modal">
+    <div class="sidenav" id="sidenav">
+      <div class="sidenav-content">
+        <div class="sidenav-header">
+          <div class="close d-none-md">
+            <a href="#" aria-hidden="true">&times;</a>
           </div>
+          <div class="sidenav-title">
+            <h3>
+              <a href="../index.html">RIDE-MY-WAY</a>
+            </h3>
+            <div class="username-circle">
+              <p>D</p>
+            </div>
+            <p>Dinma</p>
+            <span>
+              <a href="../index.html">Logout</a>
+            </span>
+          </div>
+        </div>
+        <div class="sidenav-body">
+          <a href="./user-dashboard.html" class="offer-item">Dashboard</a>
+          <a href="./rides-confirmation.html" class="offer-item active">View Rides</a>
+          <a href="./rides.html" class="offer-item">Confirmations</a>
+          <a href="./user-order-history.html" class="offer-item ">History</a>
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="main-wrapper auth-wrapper" id="has-modal">
+     
+      <div class="order-history">
+      
+        <div class = "offer-create" id="one">
+          <h2>Current Available Rides</h2>
           <hr>
-          <div>
+          <div class="order-summary">
+            <div>
               
               <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp; | ROUTE- OGUDU RD<BR>
                   &nbsp; &nbsp;<a href="#"> <br>
@@ -74,31 +86,51 @@
             <hr>
             <div>
                 
-                <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp;| ROUTE- OGUDU RD<BR>
-                  &nbsp; &nbsp;<a href="#"> <br>
-                    <a href="./user-order-details.html"><button class="btn btn-pri change">View Details</button></a>&nbsp; &nbsp;9.00AM</h3>
+                <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp; | ROUTE- OGUDU RD<BR>
+                    &nbsp; &nbsp;<a href="#"> <br>
+                      <a href="./user-order-details.html"><button class="btn btn-pri change">View Details</button></a>&nbsp; &nbsp;9.00AM</h3>
               </div>
               <hr>
               <div>
-                 
-                  <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp; | ROUTE- OGUDU RD<BR>
-                      &nbsp; &nbsp;<a href="#"> <br>
-                        <a href="./user-order-details.html"><button class="btn btn-pri change">View Details</button></a>&nbsp; &nbsp;9.00AM</h3>
+                  
+                  <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp;| ROUTE- OGUDU RD<BR>
+                    &nbsp; &nbsp;<a href="#"> <br>
+                      <a href="./user-order-details.html"><button class="btn btn-pri change">View Details</button></a>&nbsp; &nbsp;9.00AM</h3>
                 </div>
                 <hr>
-                <div class="control-btns">
-                  &nbsp; &nbsp; &nbsp; &nbsp; <a href="./user-dashboard.html">
-                    &nbsp; &nbsp;<button class="btn btn-sec">Back</button>
-                  </a>
+                <div>
+                   
+                    <h3>3.&nbsp;Mr. Idowu | OJOTA TO IKEJA &nbsp; | ROUTE- OGUDU RD<BR>
+                        &nbsp; &nbsp;<a href="#"> <br>
+                          <a href="./user-order-details.html"><button class="btn btn-pri change">View Details</button></a>&nbsp; &nbsp;9.00AM</h3>
                   </div>
-      </div>
+                  <hr>
+                  <div class="control-btns">
+                    &nbsp; &nbsp; &nbsp; &nbsp; <a href="./user-dashboard.html">
+                      &nbsp; &nbsp;<button class="btn btn-sec">Back</button>
+                    </a>
+                    </div>
+        </div>
+        </div>
+          
+        </div>
       </div>
       </div>
       </div>
       <div class="footer">
-            <p>&copy; 2018. Nma Otutu</p>
+        <p>&copy; 2018. Nma Otutu</p>
+      </div>
+      <div class="modal" id="notif-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="close">
+              <a href="#" aria-hidden="true" id="modal-close-icon">&times;</a>
+            </div>
           </div>
-          <script src="./js/dashboard.js"></script>
-</body>
-
+         
+        </div>
+      </div>
+    </body>
+    
+    
 </html>

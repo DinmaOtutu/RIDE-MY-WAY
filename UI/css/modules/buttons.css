@@ -8,6 +8,21 @@
     position: relative;
     overflow: hidden;
     outline: none;
+    margin:0px 5px 4px;
+    box-shadow: 2px 2px #1b5e20;
+	cursor:pointer;
+}
+
+#display{
+           margin: auto;
+           width: 20%;
+           padding: 10px;
+           color:white;
+	         text-align:center;
+	         height:100%;
+	         display:none;
+	         font-size: 2vw;
+          }
 }
 
 
