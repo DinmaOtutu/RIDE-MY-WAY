@@ -214,7 +214,16 @@ hr {
     margin-top: 70px;
     flex-grow: 10;
 }
-
+.searchbar{
+    border-radius: 3px;
+    border-style: none;
+    padding: 5px 5px;
+    font-family: "Nunito", sans-serif;
+    font-size: 12px;
+    outline: none;
+    box-shadow: 2px 2px #1b5e20;
+	cursor:pointer;
+}
 .auth,
 .order-confirmation {
     border-radius: 0px;
@@ -469,6 +478,12 @@ hr {
 
 .order-confirmation h2 {
     text-align: center;
+}
+.current{
+    text-align: center;
+}
+#search{
+    border:none;
 }
 
 .order-confirmation .order-summary,

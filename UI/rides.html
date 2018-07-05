@@ -25,9 +25,12 @@
       
       <div class="navlinks driver-nav">
         <div class="dropdown notification">
-          <a href="#" id="dropdown-toggler" class="link">
-            <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
-          </a>
+          <form>
+            <input type="text" name="search" value="Search for rides..."  class="searchbar"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a rides...';}" required="">
+            &nbsp;&nbsp;
+            </form><a href="#" id="dropdown-toggler" class="link">
+              <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
+            </a>
           <div class="dropdown-content driver-dropdown-content" id="dropdown-content">
               <a href="#" class="read">User just made a ride request</a>
               <a href="#">User just made a ride request</a>
@@ -69,11 +72,12 @@
     </div>
     <div class="content-wrapper dashboard">
       <div class="box-group summary">
-        <div class="box total-sum">
+        <h2 class="current">
           Confirm Requests
-        </div>
-
+        </h2>
+        <hr>
       </div>
+      
       <div class="order-details">
         <div>
           <table>
