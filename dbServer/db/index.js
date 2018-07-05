@@ -1,14 +1,13 @@
 import { Pool } from 'pg';
 
-import config from './config.json';
+import databaseConfig from './config';
 
 const env = process.env.NODE_ENV;
+const db = new Pool(databaseConfig.development);
 
-const database = {
-  connectionString: process.env[config[env].use_env_variable],
-};
-
-const db = new Pool(database);
+if (env === 'test') {
+  // Add test config
+}
 
 export default db;
 

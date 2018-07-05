@@ -8,7 +8,7 @@ export default (db, callback) => {
   };
 
   db.query(query, (error) => {
-    if (error) throw error;
+    if (error) return error;
     if (callback) callback();
   });
 };
