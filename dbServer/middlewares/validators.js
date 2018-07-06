@@ -1,6 +1,6 @@
 export default {
   notNull(...datas) {
-    const notNull = Error('Validation error');
+    const notNull = Error('No empty fields are allowed');
     notNull.errors = [];
     return (req, res, next) => {
       datas.forEach((data) => {

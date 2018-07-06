@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
 
+import db from '../db';
+
 const auth = {
   authenticate(user) {
     const token = jwt.sign({
@@ -40,8 +42,23 @@ const auth = {
       throw tokenError;
     }
 
-    req.decoded = decoded;
-    return next();
+    const { payload: { id: userId } } = decoded;
+
+    const query = {
+      text: 'Select * from users where id = $1 LIMIT 1',
+      values: [userId],
+    };
+
+    db.query(query, (error, response) => {
+      if (error) return next(error);
+      if (!response.rows.length) {
+        const noUser = Error('User does not exist');
+        noUser.status = 401;
+        return next(noUser);
+      }
+      req.decoded = decoded;
+      return next();
+    });
   },
 };
 

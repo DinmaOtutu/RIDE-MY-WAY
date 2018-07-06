@@ -26,7 +26,10 @@ export default [
       const user = response.rows[0];
       if (!response.rows.length) {
         return res.status(401).send({
-          message: 'Incorrect email',
+          status: 'error',
+          data: {
+            message: 'Incorrect email',
+          },
         });
       }
       return encrypt.compare(req, user.password, (err, result) => {
@@ -35,7 +38,10 @@ export default [
           const token = auth.authenticate(user);
           delete user.password;
           return res.status(200).send({
-            user, token,
+            status: 'successfully logged in',
+            data: {
+              user, token,
+            },
           });
         }
         return res.status(401).send({

@@ -4,6 +4,7 @@ const { env: { SALT: salt } } = process;
 
 export default {
   hash(req, res, next) {
+    if (req.body.password == null) return next();
     bcrypt.hash(req.body.password, parseInt(salt, 10), (error, hash) => {
       if (error) return next(error);
       req.body.password = hash;
