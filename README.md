@@ -1,4 +1,4 @@
-## RIDE-MY-WAY
+ ## RIDE-MY-WAY
 
 [![Build Status](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY.svg?branch=develop)](https://travis-ci.org/DinmaOtutu/RIDE-MY-WAY) 
 [![Coverage Status](https://coveralls.io/repos/github/DinmaOtutu/RIDE-MY-WAY/badge.svg?branch=develop)](https://coveralls.io/github/DinmaOtutu/RIDE-MY-WAY?branch=develop) 

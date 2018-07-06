@@ -15,8 +15,29 @@ app.use(jsonParser);
 
 routesFunction(app);
 
+
 app.get('/', (req, res) => {
   res.redirect(`api/${process.env.VERSION}`);
 });
 
+// Handling 404
+app.use((req, res) => {
+  res.status(404).send({
+    status: 'error',
+    data: {
+      message: 'Page not found',
+    },
+  });
+});
+
+
+// Handling 500
+app.use((error, req, res, next) => {
+  res.status(500).send({
+    status: 'error',
+    data: {
+      message: "Don't be alarmed... The server just crashed. I will fix it ASAP.",
+    },
+  });
+});
 export default app;
