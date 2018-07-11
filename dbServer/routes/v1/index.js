@@ -6,6 +6,9 @@ import encrypt from '../../middlewares/encrypt';
 
 import errorHandler from '../../middlewares/errorHandler';
 
+import validators from '../../middlewares/validators';
+
+
 const {
   getRide, getRides,
   createRide, createRideRequest,
@@ -14,6 +17,7 @@ const {
 } = controllers;
 
 export default (app) => {
+  app.use(validators);
   // welcome route
   app.get('/api/v1', (req, res) =>
     res.status(200).send({

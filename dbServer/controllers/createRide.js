@@ -1,16 +1,21 @@
 import db from '../db';
 
-import validators from '../middlewares/validators';
-
-const rideOfferData = [
-  'stateFrom', 'stateTo',
-  'cityTo', 'cityFrom',
-  'price', 'departureDate',
-  'departureTime', 'pickupLocation',
-];
-
 export default [
-  validators.notNull(...rideOfferData),
+  (req, res, next) => {
+    req.validateBody('notEmpty')(
+      'stateFrom', 'stateTo',
+      'cityTo', 'cityFrom', 'departureDate',
+      'departureTime', 'pickupLocation',
+      'price',
+    );
+    req.validateBody('notEmptyString')(
+      'stateFrom', 'stateTo',
+      'cityTo', 'cityFrom', 'departureDate',
+      'departureTime', 'pickupLocation',
+    );
+    req.validateBody('type', 'date')(req.body.departureDate);
+    return req.sendErrors(next);
+  },
   (req, res, next) => {
     const {
       body: {
@@ -23,18 +28,18 @@ export default [
     } = req;
 
     db.connect((error, client, done) => {
-      if (error) return next(error);
+      if (error) return done(next(error));
       const query1 = {
         text: `select * from rides where rides.departure_date = $1
         and rides.departure_time = $2`,
         values: [departureDate, departureTime],
       };
       return client.query(query1, (error1, response1) => {
-        if (error1) throw error1;
+        if (error1) return done(next(error1));
         if (response1.rows.length) {
           const uniqueError = Error(`Another ride already scheduled for ${departureTime} on ${departureDate}`);
           uniqueError.status = 409;
-          return next(uniqueError);
+          return done(next(uniqueError));
         }
         const query2 = {
           text: `insert into rides (

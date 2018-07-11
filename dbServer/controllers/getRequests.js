@@ -6,18 +6,18 @@ export default (req, res, next) => {
   }
   const { decoded: { payload: { id: userId } }, params: { rideId } } = req;
   return db.connect((error, client, done) => {
-    if (error) return next(error);
+    if (error) return done(next(error));
     const ownsRide = {
       text: 'select * from rides where rides.id = $1::int and rides.user_id = $2::int',
       values: [rideId, userId],
     };
 
     return client.query(ownsRide, (error1, response1) => {
-      if (error1) return next(error1);
+      if (error1) return done(next(error1));
       if (!response1.rows.length) {
         const noOwnRide = Error(`Ride ${rideId} does not exist or you do not own it`);
-        noOwnRide.status = 403;
-        return next(noOwnRide);
+        noOwnRide.status = 404;
+        return done(next(noOwnRide));
       }
       const query = {
         text: `select requests.*,
