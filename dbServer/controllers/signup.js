@@ -2,15 +2,17 @@ import db from '../db';
 
 import auth from '../middlewares/auth';
 
-import validators from '../middlewares/validators';
-
-const signUpData = [
-  'email', 'firstname', 'lastname',
-  'phone', 'password', 'city', 'state',
-];
-
 export default [
-  validators.notNull(...signUpData),
+  (req, res, next) => {
+    req.validateBody('email')();
+    req.validateBody('notEmpty')(
+      'password', 'email', 'firstname',
+      'lastname', 'city', 'state', 'phone',
+    );
+    req.validateBody('notEmptyString')('password', 'email', 'firstname', 'lastname', 'city', 'state', 'phone');
+    req.validateBody('type', 'password')(req.body.password);
+    return req.sendErrors(next);
+  },
   (req, res, next) => {
     const notUnique = {
       text: `select * from users where users.email = $1 or (users.firstname = $2
@@ -23,13 +25,13 @@ export default [
       values: [req.body.carModel, req.body.carMake],
     };
     db.connect((error, client, done) => {
-      if (error) return next(error);
+      if (error) return done(next(error));
       return client.query(notUnique, (error1, res1) => {
-        if (error1) return next(error1);
+        if (error1) return done(next(error1));
         if (res1.rows.length) {
           const alreadyExists = Error('Email or name already exists');
-          alreadyExists.status = 400;
-          return next(alreadyExists);
+          alreadyExists.status = 409;
+          return done(next(alreadyExists));
         }
 
         return client.query(query, (error2, res2) => {

@@ -3,10 +3,14 @@ import { Pool } from 'pg';
 import databaseConfig from './config';
 
 const env = process.env.NODE_ENV;
-const db = new Pool(databaseConfig.development);
+
+let db;
 
 if (env === 'test') {
   // Add test config
+  db = new Pool(databaseConfig.test);
+} else {
+  db = new Pool(databaseConfig.development);
 }
 
 export default db;

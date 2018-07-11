@@ -1,4 +1,7 @@
 {
-    "reporter": ["lcov", "html", "text"]
+    "reporter": ["lcov", "html", "text"],
+    "exclude": [
+        "test/"
+    ]
 
 }    

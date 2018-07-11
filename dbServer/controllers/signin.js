@@ -4,15 +4,14 @@ import auth from '../middlewares/auth';
 
 import encrypt from '../middlewares/encrypt';
 
-import validators from '../middlewares/validators';
-
-const signInData = [
-  'email', 'password',
-];
-
-
 export default [
-  validators.notNull(...signInData),
+  (req, res, next) => {
+    req.validateBody('email')();
+    req.validateBody('notEmpty')('password', 'email');
+    req.validateBody('notEmptyString')('password', 'email');
+    req.validateBody('type', 'password')(req.body.password);
+    return req.sendErrors(next);
+  },
   (req, res, next) => {
     const query = {
       text: 'select id, firstname, lastname, email, password from users where email = $1 LIMIT 1',
@@ -26,10 +25,7 @@ export default [
       const user = response.rows[0];
       if (!response.rows.length) {
         return res.status(401).send({
-          status: 'error',
-          data: {
-            message: 'Incorrect email',
-          },
+          message: 'Incorrect email',
         });
       }
       return encrypt.compare(req, user.password, (err, result) => {
@@ -38,10 +34,7 @@ export default [
           const token = auth.authenticate(user);
           delete user.password;
           return res.status(200).send({
-            status: 'successfully logged in',
-            data: {
-              user, token,
-            },
+            user, token,
           });
         }
         return res.status(401).send({

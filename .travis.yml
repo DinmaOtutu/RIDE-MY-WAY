@@ -2,7 +2,18 @@ language: node_js
 
 node_js:
   - '10.0.0'
+  
+  
+
+script: 
+    - npm test
+
+services: 
+    - postgresql
+before_script: 
+      - psql -c 'CREATE DATABASE travis;' -U postgres
 
    
 after_success:
   - npm run coverage
+  - npm run coveralls

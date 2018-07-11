@@ -25,7 +25,7 @@ app.use((req, res) => {
   res.status(404).send({
     status: 'error',
     data: {
-      message: 'Page not found',
+      message: 'ride not found',
     },
   });
 });
