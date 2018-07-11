@@ -7,11 +7,15 @@ node_js:
 
 script: 
     - npm test
+    env:
+  global:
+  -SECRET=supersecret
 
 services: 
     - postgresql
 before_script: 
-      - psql -c 'CREATE DATABASE travis;' -U postgres
+      psql -c 'drop database if exists ride-my-way_test;' -U postgres
+  - psql -c 'create database ride-my-way_test;' -U postgres
 
    
 after_success:
