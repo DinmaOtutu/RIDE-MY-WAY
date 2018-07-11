@@ -3,20 +3,19 @@ language: node_js
 node_js:
   - '10.0.0'
   
-  
-
 script: 
     - npm test
-    env:
-  global:
-  - SECRET=supersecret
 
+env:
+  global:
+      -SECRET=supersecret
+    
 services: 
     - postgresql
+
 before_script: 
   - psql -c 'drop database if exists ride-my-way_test;' -U postgres
   - psql -c 'create database ride-my-way_test;' -U postgres
-
    
 after_success:
   - npm run coverage
