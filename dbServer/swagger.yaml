@@ -1,0 +1,239 @@
+swagger: "2.0"
+info:
+  description: "This is a car pooling appication that allows users to either offer to create a ride or join an already available ride."
+  version: "1.0.0"
+  title: "Ride My Way"
+  
+  contact:
+    email: "otutudinma1995@gmail.com"
+host: "ride-my-way-cars.herokuapp.com"
+basePath: "/api/v1"
+schemes:
+- "https"
+- "http"
+paths:
+  /rides:
+    get:
+      tags:
+      - "Rides"
+      summary: "Get all available rides here"
+      description: "Returns an array containing all available ride offers"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success"
+        404:
+          description: "Not Found"
+        500: 
+          description: "Server Error"
+  /rides/:rideId:        
+    get:
+      tags:
+      - "Rides"
+      summary: "Get a single ride"
+      description: "Returns an object containing details of a particular  ride"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "rideId"
+        description: "the required ID to be returned"
+        required: true
+        schema:
+          $ref: "#/definitions/createRide"
+      responses:
+        200:
+          description: "Ride Details"
+        404:
+          description: "ride not found or no availavle rides"
+        500:
+          description: "Server Error"
+  /rides/:rideId/requests:
+    post:
+      tags:
+      - "Rides"
+      summary: "Make a ride request"
+      description: "Requests to join an existing ride"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successfully requested"
+        404:
+          description: "ride not found or no availavle rides"
+        500:
+          description: "Server Error"  
+  /users/rides:
+    post:
+      tags:
+      - "Users Routes"
+      summary: "User creates a ride"
+      description: "A user creates a new ride offer"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "path"
+        description: "Response should be an object"
+        required: true
+        type: "string"
+        items:
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/createRide"
+        201:
+          description: "Created successfully"
+        500:
+          description: "Server Error"
+  /users/rides/:rideId/requests:
+    get:
+      tags:
+      - "Users Routes"
+      summary: "get requests made for this ride"
+      description: "A logged in user who created the ride views all requests made for the ride created"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Requested Rides"
+          schema:
+            $ref: "#/definitions/rideRequest"
+        400:
+          description: "Invalid ride Id"
+        404:
+          description: "ride not found or not yours"
+  /users/rides/:rideId/requests/:requestId:
+    put:
+      tags:
+      - "Users Routes"
+      summary: "Reply Request"
+      description: "A logged in user who created a ride, gets ride request to join the ride either accepts or rejects the ride"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successfully Updated"
+        404:
+          description: "Ride not found"
+        500:
+          description: "Server Error"
+          schema:
+            $ref: "#/definitions/rideRequest"
+  /auth/signup:
+    post:
+      tags:
+      - "User"
+      summary: "Creates a new user"
+      description: "A new user is created and a token is given to be able to access protected routes(endpoints)"
+      produces:
+      - "application/json"
+         
+      responses:
+        201:
+          description: "successfully created"
+        500: 
+          description: "server Error"
+          schema:
+            $ref: "#/definitions/User"
+      security:
+      - api_key: []
+  /auth/login:
+    post:
+      tags:
+      - "User"
+      summary: "Logs in an existing user"
+      description: "The logged in user gets a token to be able to access protected routed "
+      produces:
+      - "application/json"
+      parameters:
+      - name: "email"
+        in: "query"
+        description: "The email for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successfully logged in"
+          schema:
+            type: "string"
+        401:
+          description: "Invalid email or password"
+          schema:
+            $ref: "#/definitions/User"
+securityDefinitions:
+  api_key:
+    name: "token"
+    in: "header"
+definitions:
+  createRide:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      stateFrom:
+        type: "string"
+      stateTo:
+        type: "string"
+      cityFrom:
+        type: "string"
+      cityTo:
+        type: "string"
+      departureDate:
+        type: "string"
+      departureTime:
+        type: "string"
+      pickupLocation:
+        type: "string"  
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      city: 
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      state:
+        type: "string"
+  rideRequest:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      category:
+        $ref: "#/definitions/rideRequest"
+      rideId:
+        type: "integer"
+        example: "1"
+      UserId:
+        type: "integer"
+      status:
+        type: "string"
+        description: "Status of a ride request"
+        enum:
+        - "pending"
+        - "accept"
+        - "reject"
+        default:
+        - "pending"
+    
