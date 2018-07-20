@@ -2,6 +2,8 @@ import db from '../db';
 
 import auth from '../middlewares/auth';
 
+import encrypt from '../middlewares/encrypt';
+
 export default [
   (req, res, next) => {
     req.validateBody('email')();
@@ -13,6 +15,7 @@ export default [
     req.validateBody('type', 'password')(req.body.password);
     return req.sendErrors(next);
   },
+  encrypt.hash,
   (req, res, next) => {
     const notUnique = {
       text: `select * from users where users.email = $1 or (users.firstname = $2
@@ -25,7 +28,7 @@ export default [
       values: [req.body.carModel, req.body.carMake],
     };
     db.connect((error, client, done) => {
-      if (error) return done(next(error));
+      if (error) return next(error);
       return client.query(notUnique, (error1, res1) => {
         if (error1) return done(next(error1));
         if (res1.rows.length) {
@@ -35,7 +38,7 @@ export default [
         }
 
         return client.query(query, (error2, res2) => {
-          if (error2) return next(error2);
+          if (error2) return done(next(error2));
           const carId = res2.rows[0].id;
           const query2 = {
             text: `insert into users (

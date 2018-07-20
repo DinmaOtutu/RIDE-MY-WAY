@@ -32,7 +32,7 @@ export default (req, res, next) => {
       keys.forEach((key) => {
         if (!req.body[key] || !req.body[key].trim || !req.body[key].trim().length) {
           notEmptyString = false;
-          req.body.errors.notEmptyString.push(`'${req.body.key}' ${key} is an empty string or not a string`);
+          req.body.errors.notEmptyString.push(`'${req.body.key}' is an empty string or not a string`);
         }
       });
       return notEmptyString;
@@ -45,19 +45,17 @@ export default (req, res, next) => {
           return true;
         },
         date: (dateString) => {
-          if (new Date(dateString) === 'Invalid Date' || isNaN(new Date(dateString))) {
+          if ((new Date(dateString)).toDateString() === 'Invalid Date') {
             return req.body.errors.dateType.push(`'${dateString}' is not a valid dateString`);
           }
           return true;
         },
         password: (pwd) => {
-          if (types.string(pwd) && Validator.notEmptyString(pwd)) {
-            // min 8 characters, one letter, one number
-            if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(pwd)) {
-              return true;
-            }
-            return req.body.errors.passwordType.push(`'${pwd}' should be minimun 8 characters and contain at least one number and one letter`);
+          // min 8 characters, one letter, one number
+          if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(pwd)) {
+            return true;
           }
+          req.body.errors.passwordType.push('Password should be minimum 8 characters and contain at least one number and one letter');
           return false;
         },
       };
@@ -83,7 +81,7 @@ export default (req, res, next) => {
     }
   }
 
-  req.validateBody = (bodyParam, ...rest) => (rest.includes('type')
+  req.validateBody = (bodyParam, ...rest) => (bodyParam === 'type'
     ? Validator[bodyParam](...rest)
     : Validator[bodyParam]);
   req.sendErrors = next2 => Validator.end(next2);

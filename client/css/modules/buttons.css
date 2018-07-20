@@ -1,0 +1,129 @@
+.btn {
+    border-radius: 3px;
+    border-style: none;
+    padding: 10px 40px;
+    font-family: "Nunito", sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    margin:0px 5px 4px;
+    box-shadow: 2px 2px #1b5e20;
+	cursor:pointer;
+}
+
+#display{
+           margin: auto;
+           width: 20%;
+           padding: 10px;
+           color:white;
+	         text-align:center;
+	         height:100%;
+	         display:none;
+	         font-size: 2vw;
+          }
+}
+
+
+.btn:hover,
+.btn.focus,
+.btn.active {
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-pri {
+    border: 2px solid #449d48;
+    background-color: #449d48;
+    color: #FFFFFF;
+}
+
+.btn-pri:hover,
+.btn-pri.focus,
+.btn-pri.active {
+    transition: background-color 0.5s, border-color 0.5s;
+    background-color: #449d48;
+    border-color: #449d48;
+    color: #FFFFFF;
+}
+
+.btn-sec {
+    border: 2px solid #4CAF50;
+    background-color: transparent;
+    color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.btn-sec:hover,
+.btn-sec.focus,
+.btn-sec.active {
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+    background-color: #449d48;
+    border-color: #449d48;
+    color: white;
+}
+
+.btn-pri-danger {
+    border: 2px solid #d50000;
+    background-color: #d50000;
+    color: #FFFFFF;
+}
+
+.btn-pri-danger:hover,
+.btn-pri-danger.focus,
+.btn-pri-danger.active {
+    transition: background-color 0.5s, border-color 0.5s;
+    background-color: #bc0000;
+    border-color: #bc0000;
+    color: #FFFFFF;
+}
+
+.btn-sec-danger {
+    border: 2px solid #d50000;
+    background-color: transparent;
+    color: #d50000;
+    border-color: #d50000;
+}
+
+.btn-sec-danger:hover,
+.btn-sec-danger.focus,
+.btn-sec-danger.active {
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+    background-color: #bc0000;
+    border-color: #bc0000;
+    color: white;
+}
+
+.control-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+@media (max-width: 768px) {
+    .control-btns .btn {
+        border: 0;
+        padding: 15px 0 0 0;
+        font-size: 1em;
+    }
+
+    @media (max-width: 600px) {
+        .control-btns .btn {
+            border: 0;
+            padding: 10px 0 0 0;
+            font-size: 0.9em;
+        }
+    .control-btns .btn:hover,
+    .control-btns .btn:focus,
+    .control-btns .btn:active {
+        background-color: transparent;
+        border: 0;
+        color: #449d48;
+    }
+}

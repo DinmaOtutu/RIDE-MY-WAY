@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Ride My Way</title>
+</head>
+
+<body class="driver">
+  <div class="header">
+    <div class="navbar">
+      <div class="offer-control d-none-md">
+        <a href="#sidenav" class="d-none-md">
+          <img src="./css/images/toggler.png" alt="toggler">
+        </a>
+      </div>
+      <div class="page-title d-flex-md">
+          <div class="date">
+            <h2>Hello, Dinma</h2>
+          </div>
+        </div>
+      
+      <div class="navlinks driver-nav">
+        <div class="dropdown notification">
+          <form>
+            <input type="text" name="search" value="Search for rides..."  class="searchbar"onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a rides...';}" required="">
+            &nbsp;&nbsp;
+            </form><a href="#" id="dropdown-toggler" class="link">
+              <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
+            </a>
+          <div class="dropdown-content driver-dropdown-content" id="dropdown-content">
+              <a href="#" class="read">User just made a ride request</a>
+              <a href="#">User just made a ride request</a>
+              <a href="#" class="read">User declined an order</a>
+              <a href="#">User just made a ride request</a>
+              <a href="#">user accepted a ride request</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="sidenav" id="sidenav">
+      <div class="sidenav-content">
+        <div class="sidenav-header">
+          <div class="close d-none-md">
+            <a href="#" aria-hidden="true">&times;</a>
+          </div>
+          <div class="sidenav-title">
+            <h3>
+              <a href="../index.html">RIDE-MY-WAY</a>
+            </h3>
+            <div class="username-circle">
+              <p>D</p>
+            </div>
+            <p>Dinma</p>
+            <span>
+              <a href="../index.html">Logout</a>
+            </span>
+          </div>
+        </div>
+        <div class="sidenav-body">
+            <a href="./user-dashboard.html" class="offer-item">Dashboard</a>
+          <a href="./rides-confirmation.html" class="offer-item ">View Rides</a>
+          <a href="./rides.html" class="offer-item active">Confirmations</a>
+          <a href="./user-order-history.html" class="offer-item">History</a>
+        </div>
+      </div>
+    </div>
+    <div class="content-wrapper dashboard">
+      <div class="box-group summary">
+        <h2 class="current">
+          Confirm Requests
+        </h2>
+        <hr>
+      </div>
+      
+      <div class="order-details">
+        <div>
+          <table>
+            <thead >
+              <th>Order Id</th>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Destination</th>
+              <th>Date</th>
+              <th>Status</th>
+            </thead>
+            <tr>
+              <td>001</td>
+              <td>Ms Adaeze</td>
+              <td>Ikotun</td>
+              <td>Egbeda</td>
+              <td>27/12/2018 8:50pm</td>
+              <td>
+                <span>
+                  <select class="success table-select" value="Pending">
+                    <option class="warning " value="pending" selected>Pending</option>
+                    <option class="success table-select" value="Accept">Accept</option>
+                    <option class="danger table-select" value="reject">Reject</option>
+                  </select>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>001</td>
+              <td>Ms Adaeze</td>
+              <td>Ikotun</td>
+              <td>Egbeda</td>
+              <td>27/12/2018 8:50pm</td>
+              <td>
+                <span>
+                  <select class="success table-select" value="Pending">
+                    <option class="warning" value="pending" selected>Pending</option>
+                    <option class="success" value="Accept">Accept</option>
+                    <option class="danger" value="reject">Reject</option>
+                  </select>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>001</td>
+              <td>Ms Adaeze</td>
+              <td>Ikotun</td>
+              <td>Egbeda</td>
+              <td>27/12/2018 8:50pm</td>
+              <td>
+                <span>
+                  <select class="success table-select" value="Pending">
+                    <option class="warning" value="pending" selected>Pending</option>
+                    <option class="success" value="Accept">Accept</option>
+                    <option class="danger" value="reject">Reject</option>
+                  </select>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>001</td>
+              <td>Ms Adaeze</td>
+              <td>Ikotun</td>
+              <td>Egbeda</td>
+              <td>27/12/2018 8:50pm</td>
+              <td>
+                <span>
+                  <select class="success table-select" value="Pending">
+                    <option class="warning" value="pending" selected>Pending</option>
+                    <option class="success" value="Accept">Accept</option>
+                    <option class="danger" value="reject">Reject</option>
+                  </select>
+                </span>
+              </td>
+            </tr>
+            <tr class="accept-t">
+              <td>001</td>
+              <td>Ms Adaeze</td>
+              <td>Ikotun</td>
+              <td>Egbeda</td>
+              <td>27/12/2018 8:50pm</td>
+              <td>
+                <span>
+                  <select class="success table-select" value="Pending">
+                    <option class="warning" value="pending" selected>Pending</option>
+                    <option class="success" value="Accept">Accept</option>
+                    <option class="danger" value="reject">Reject</option>
+                  </select>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <p>&copy; 2018. Nma Otutu.</p>
+  </div>
+  <div class="modal" id="notif-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="close">
+          <a href="#" aria-hidden="true" id="modal-close-icon">&times;</a>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</body>
+
+</html>

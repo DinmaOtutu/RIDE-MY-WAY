@@ -1,0 +1,168 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Ride My Way</title>
+</head>
+
+<body class="driver">
+  <div class="header">
+    <div class="navbar">
+      <div class="offer-control d-none-md">
+        <a href="#sidenav" class="d-none-md">
+          <img src="css/images/toggler.png" alt="toggler">
+        </a>
+      </div>
+      <div class="page-title d-flex-md">
+        <div class="date" id='js-welcome'>
+        </div>
+      </div>
+      <div class="navlinks driver-nav">
+        <div class="dropdown notification">
+          <a href="#" id="dropdown-toggler" class="link">
+            <img src="./css/images/notification.png" alt="notification bell" id="dropdown-img">
+          </a>
+          <div class="dropdown-content driver-dropdown-content" id="dropdown-content">
+            <a href="#" class="read">User just made a ride request</a>
+            <a href="#">User just made a ride request</a>
+            <a href="#" class="read">User declined an order</a>
+            <a href="#">User just made a ride request</a>
+            <a href="#">user accepted a ride request</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="content" id="has-modal">
+    <div class="sidenav" id="sidenav">
+      <div class="sidenav-content">
+        <div class="sidenav-header">
+          <div class="close d-none-md">
+            <a href="#" aria-hidden="true">&times;</a>
+          </div>
+          <div class="sidenav-title">
+            <h3>
+              <a href="./index.html">RIDE-MY-WAY</a>
+            </h3>
+            <div class="username-circle">
+              <p>&#9663;</p>
+            </div>
+            <p id='js-user'></p>
+            <span>
+              <a href="./index.html">Logout</a>
+            </span>
+          </div>
+        </div>
+        <div class="sidenav-body">
+            <a href="#" class="offer-item active">Dashboard</a>
+            <a href="./rides-confirmation.html"  class="offer-item">View Rides</a>
+            <a href="./rides.html"  class="offer-item">Confirmations</a>
+            <a href="./user-order-history.html"  class="offer-item">History</a> 
+        </div>
+      </div>
+    </div>
+    <div class="content-wrapper ridez offer-ridez">
+      <div class="date d-none-md">
+      </div>
+      <div class="selectdate-div d-flex-md">
+        <input type="date" id="selectdate">
+      </div>
+      <div class="top">
+        <button class="btn btn-pri" id="offer-modal-btn">
+          Make a Ride Offer</button>
+      </div>
+      <div class="page-heading">
+        <h2></h2>
+        <hr class="w-90">
+      </div><br><br>
+      <div class="main-wrapper auth-wrapper">
+        <div class="auth">
+          <div class="content">
+      <div class ="offer-create">
+      
+            <form action="./user-dashboard.html" id='js-ride'>
+            <div class="form-input">
+              <label for="statefrom"> State From</label>
+              <input type="text" required id="statefrom" name="statefrom" value="" />
+            </div>
+            
+            <div class="form-input">
+                <label for="stateto"> State To</label>
+                <input type="text" required id="stateto" name="stateto" value="" />
+              </div>
+    
+            <div class="form-input">
+              <label for="departuretime">Departure Time</label>
+              <input type="time" required id="departuretime" name="departuretime" value=""  />
+            </div>
+
+            <div class="form-input">
+                <label for="departuredate"> Departure Date</label>
+                <input type="date" required id="departuredate" name="departuredate" value="" />
+              </div>
+             
+              <div class="form-input">
+                  <label for="price"> Price</label>
+                  <input type="number" min="1" step="any" required id="price" name="price" value="" />
+              </div>
+
+              <div class="form-input">
+                  <label for="pickup"> Pickup Location</label>
+                  <input type="text" required id="pickup" name="pickup" value="" />
+              </div>
+
+              <div class="form-input">
+                  <label for="cityto"> City To</label>
+                  <input type="text" required id="cityto" name="cityto" value="" />
+              </div>
+
+              <div class="form-input">
+                  <label for="cityfrom"> City From</label>
+                  <input type="text" required id="cityfrom" name="cityfrom" value="" />
+              </div>
+           
+
+              <div class="form-input">
+                  <!-- <a href="./dashboard.html"  class="offer-item"> -->
+                  <button class="btn btn-pri" id="myBtn">Create</button>
+                </div>
+                  <!-- </a> -->
+                   <!-- The Modal -->
+              <div id="myModal" class="modal">
+  
+                <!-- Modal content -->
+                <div class="modal-header">
+                <div class="modal-content">
+                <div class="modal-body">
+                <span class="close">&times;</span>
+                </div>
+                <h3> Thank you, an offer has been created and a notification will be sent to you!</h3>
+                </div>
+                <div class="modal-footer">
+                </div>
+  
+              </div>		
+                          </div>
+        
+          </form>
+          
+          </div>
+          </div>
+          </div>
+          
+  </div>
+</div>
+</div>
+  <div class="footer">
+    <p>&copy; 2018. Nma Otutu. </p>
+  </div>
+  
+</body>
+<script src="./js/dashboard.js"></script>
+<script src="./js-client/dashboard.js"></script>
+<script src="./js-client/common.js"></script>
+</html>
