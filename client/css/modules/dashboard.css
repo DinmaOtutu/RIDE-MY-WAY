@@ -1,0 +1,46 @@
+.dashboard .box-group.summary {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dashboard .summary .total-sum,
+.dashboard .summary .total-cash,
+.dashboard .summary .pending {
+    font-size: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:#4CAF50;
+}
+
+.dashboard .summary .total-sum .count,
+.dashboard .summary .total-cash .count,
+.dashboard .summary .pending .count {
+    font-size: 1.2em;
+}
+
+.dashboard .summary .total-sum {
+    color: white;
+}
+
+.dashboard .summary .pending {
+    color: #E32429;
+}
+
+.dashboard .summary.box-group .box {
+    max-height: 80px;
+    text-align: center;
+    padding: 10px;
+}
+
+.dashboard .order-details {
+    margin-top: -30px;
+    padding: 0 40px;
+}
+
+.dashboard .order-history {
+    margin-top: 0;
+}
