@@ -54,11 +54,11 @@
               <a href="../index.html">RIDE-MY-WAY</a>
             </h3>
             <div class="username-circle">
-              <p>D</p>
+              <p></p>
             </div>
-            <p>Dinma</p>
+            <p id='js-user'></p>
             <span>
-              <a href="../index.html">Logout</a>
+              <a href="./index.html?red=2" id="logout">Logout</a>
             </span>
           </div>
         </div>
@@ -72,36 +72,14 @@
       </div>
     </div>
     <div class="main-wrapper">
-      <div class="order-confirmation">
-        <div>
-          <h2>Ride Details</h2><h3>Please ensure to be at the pick up
-                  location five minutes before departure time.</h3>
-          </div>
-          <hr>
-          <div class="order-summary">
-              
-            <div class="control-btns">
-              
-              <h3> &nbsp;Driver Name: &nbsp; Mr. Idowu <br><br>&nbsp;Car Model: &nbsp;Toyota Corolla &nbsp;
-                  <br><br>&nbsp;Plate Number: &nbsp;AAA-668-CJ &nbsp;
-                  <br><br>&nbsp;Available Seats: &nbsp;2 &nbsp;
-                  <br><br>&nbsp;Pick Up Point:  &nbsp;Ojota Bustop &nbsp;
-                  <br><br>&nbsp;Phone Number:  &nbsp;07062313448 &nbsp;
-                  
-  
-                  &nbsp; &nbsp;  
-                  </h3>
-            </div>
-            <hr>
+      <div class="order-confirmation" id="js-order-confirmation">
+             <progress
+               style="width: 100%;transform: translateY(50%);">
+             </progress>
+         </div>
+      
            
-          <div class="control-btns">
-            <a href="./user-dashboard.html">
-              <button class="btn btn-pri">back</button>
-            </a>
-            <a href="./user-dashboard.html">
-              <button class="btn btn-pri" id="confirm">Request</button>
-            </a>
-            </div></div></div>
+          </div></div>
       <div class="footer">
         <p>&copy; 2018. Nma Otutu</p>
       </div>
@@ -112,10 +90,13 @@
               <a href="#" aria-hidden="true" id="modal-close-icon">&times;</a>
             </div>
           </div>
-         
+          <h3 id='js-message'></h3>
+                 </div>
         </div>
       </div>
     </body>
-    
+<script src="./js-client/offer-detail.js"></script>
+<script src="./js-client/requestRide.js"></script>
+<script src="./js-client/common.js"></script>
     
 </html>
