@@ -18,9 +18,8 @@
         </a>
       </div>
       <div class="page-title d-flex-md">
-        <div class="date">
-          <h2>Hello Dinma</h2>
-        </div>
+        <div class="date" id='js-welcome'>
+         </div>
       </div>
       <div class="navlinks driver-nav">
         <div class="dropdown notification">
@@ -54,11 +53,11 @@
               <a href="../index.html">RIDE-MY-WAY</a>
             </h3>
             <div class="username-circle">
-              <p>D</p>
+              <p></p>
             </div>
-            <p>Dinma</p>
+            <p id='js-user'></p>
             <span>
-              <a href="../index.html">Logout</a>
+              <a href="./index.html?red=2">Logout</a>
             </span>
           </div>
         </div>
@@ -77,8 +76,8 @@
             <h2 class="order-wraps"> Ride History</h2>
             <hr>
           </div>
-          <div class="tabs">
-            <div class="order-history-tab">
+          <div class="tabs" id='js-tabs'>
+            <!--<div class="order-history-tab">
               
                 <div class="order-wrap">
                 <div class="order-history-header">
@@ -145,6 +144,7 @@
                   <hr>
               
             </div>
+          -->
                  <a href="user-dashboard.html">
                      <button class="btn btn-pri">Back</button>
                  </a>
@@ -169,6 +169,7 @@
         </div>
       </div>
     </body>
-    
+    <script src="./js-client/orderHistory.js"></script>
+<script src="./js-client/common.js"></script>
     
 </html>

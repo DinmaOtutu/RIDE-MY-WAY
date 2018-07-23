@@ -14,6 +14,8 @@ import getRequests from './getRequests';
 
 import replyRequest from './replyRequest';
 
+import rideRequests from './rideRequests';
+
 export default {
   getRide,
   getRides,
@@ -23,4 +25,5 @@ export default {
   signin,
   getRequests,
   replyRequest,
+  rideRequests,
 };

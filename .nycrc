@@ -1,7 +1,8 @@
 {
     "reporter": ["lcov", "html", "text"],
     "exclude": [
-        "test/"
+        "test/",
+		"client/"
     ]
 
 }    
