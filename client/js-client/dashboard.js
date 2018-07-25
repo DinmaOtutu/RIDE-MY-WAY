@@ -2,6 +2,32 @@
 const welcome = document.getElementById('js-welcome');
 const displayName = document.getElementById('js-user');
 const displayLetter = document.querySelector('.username-circle p');
+const modal1 = document.getElementById('notif-modal');
+const dateInput = document.getElementById('departuredate');
+const timeInput = document.getElementById('departuretime');
+
+const formatDateToString = (date) => {
+  const dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
+
+  const MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+
+  const yyyy = date.getFullYear();
+  return (`${yyyy}-${MM}-${dd}`);
+};
+
+  // one year
+let date = new Date(Date.now() + (1000 * 60 * 60 * 24 * 365));
+const dateMax = formatDateToString(date);
+// today, 8 hours from now
+date = new Date((Date.now() + (1000 * 60 * 60 * 8)));
+const dateMin = formatDateToString(date);
+const timeMin = (new Date(Date.now() + (1000 * 60 * 60 * 8)))
+  .toLocaleTimeString(undefined, { hour12: false });
+dateInput.setAttribute('max', dateMax);
+dateInput.setAttribute('min', dateMin);
+timeInput.setAttribute('min', timeMin);
+
+const modalHeader = modal.querySelector('.modal-header');
 
 const user = JSON.parse(localStorage.getItem('user'));
 
@@ -20,7 +46,6 @@ displayLetter.textContent = (
 
 const rideForm = document.getElementById('js-ride');
 const token = localStorage.getItem('token');
-const alertModal = document.getElementById('myModal');
 const processNewRide = (evt) => {
   evt.preventDefault();
   const headers = new Headers({
@@ -49,12 +74,16 @@ const processNewRide = (evt) => {
       if (!res.ok) {
         return alert(JSON.stringify(data));
       }
-      alertModal.style.setProperty('display', 'block');
       rideForm.reset();
-      return setTimeout(
-        () => alertModal.style.setProperty('display', 'none'),
-        3000,
-      );
+      modalHeader.innerHTML += `<p style='font-size:larger;color:green;'>
+        Ride successfully created!
+        </p>
+        `;
+      modal1.style.setProperty('display', 'block');
+      return setTimeout(() => {
+        modalHeader.removeChild(modalHeader.querySelector('p'));
+        modal1.style.setProperty('display', 'none');
+      }, 2000);
     })
     .catch(error => common.errorHandler(error));
 };

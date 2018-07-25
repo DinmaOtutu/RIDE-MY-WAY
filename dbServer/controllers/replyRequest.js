@@ -17,7 +17,11 @@ export default [
     return db.connect((error, client, done) => {
       if (error) return done(next(error));
       const ownsRide = {
-        text: 'select * from rides where rides.id = $1::int and rides.user_id = $2::int',
+        text: `
+       select * from rides where rides.id = $1::int 
+        and rides.user_id = $2::int and
+        rides.deleted is not true
+        `,
         values: [rideId, userId],
       };
 
@@ -29,10 +33,15 @@ export default [
           return done(next(noOwnRide));
         }
         const query = {
-          text: `select * from requests inner join users on
-        users.id = requests.user_id and requests.ride_id = (
-          select rides.id from rides where rides.user_id = $1::int and rides.id = $2::int
-        )`,
+          text: `select * from requests 
+                    inner join users on
+                    users.id = requests.user_id 
+                    and requests.ride_id = (
+                     select rides.id from rides 
+                     where rides.user_id = $1::int 
+                     and rides.id = $2::int
+                     and rides.deleted is not true
+                   )`,
           values: [userId, rideId],
         };
         return client.query(query, (error2, response2) => {

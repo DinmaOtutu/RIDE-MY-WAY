@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -102,12 +103,12 @@
 
             <div class="form-input">
                 <label for="departuredate"> Departure Date</label>
-                <input type="date" required id="departuredate" name="departuredate" value="" />
+                <input type="date" required id="departuredate" value="" name="departuredate" />
               </div>
              
               <div class="form-input">
                   <label for="price"> Price</label>
-                  <input type="number" min="1" step="any" required id="price" name="price" value="" />
+                  <input type="number" min="1" step="any" maxlength="20" required id="price" name="price" value="" />
               </div>
 
               <div class="form-input">
@@ -136,17 +137,16 @@
   
                 <!-- Modal content -->
                 <div class="modal-header">
-                <div class="modal-content">
-                <div class="modal-body">
-                <span class="close">&times;</span>
-                </div>
-                <h3> Thank you, an offer has been created and a notification will be sent to you!</h3>
-                </div>
+                  <div class="modal-content">
+                    <div class="modal-body">
+                    <span class="close">&times;</span>
+                    </div>
+                  </div>
                 <div class="modal-footer">
                 </div>
   
-              </div>		
-                          </div>
+                </div>		
+              </div>
         
           </form>
           
@@ -155,12 +155,21 @@
           </div>
           
   </div>
-</div>
+    </div>
 </div>
   <div class="footer">
     <p>&copy; 2018. Nma Otutu. </p>
   </div>
-  
+  <div class="modal" id="notif-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="close">
+          <a href="#" aria-hidden="true" id="modal-close-icon">&times;</a>
+        </div>
+      </div>
+     
+    </div>
+  </div>
 </body>
 <script src="./js/dashboard.js"></script>
 <script src="./js-client/dashboard.js"></script>

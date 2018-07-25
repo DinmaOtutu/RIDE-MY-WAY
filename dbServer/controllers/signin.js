@@ -14,7 +14,9 @@ export default [
   },
   (req, res, next) => {
     const query = {
-      text: 'select id, firstname, lastname, email, password from users where email = $1 LIMIT 1',
+      text: `select id, firstname, 
+           lastname, email, password 
+           from users where email = $1 LIMIT 1`,
       values: [
         req.body.email,
       ],

@@ -12,7 +12,9 @@ export default (req, res, next) => {
     cars.model as car_model from 
     rides inner join users on rides.id = ${rideId} and 
     rides.user_id = users.id
-    left outer join cars on users.car_id = cars.id
+    and rides.deleted is not true
+       left outer join cars 
+       on users.car_id = cars.id
     LIMIT 1`,
   };
   return db.query(query, (error, response) => {
