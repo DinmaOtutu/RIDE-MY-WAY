@@ -49,6 +49,14 @@ const {
     departure_time: departureTime2,
     pickup_location: pickupLocation2,
     user_id: userId2,
+  }, ride3: {
+    state_from: stateFrom3, state_to: stateTo3,
+    city_from: cityFrom3, city_to: cityTo3,
+    price: price3,
+    departure_date: departureDate3,
+    departure_time: departureTime3,
+    pickup_location: pickupLocation3,
+    user_id: userId3,
   },
 } = rides;
 
@@ -88,12 +96,16 @@ export default class Seeder {
       departure_date, departure_time, pickup_location, user_id)
       values($1, $2, $3, $4, $5,
         $6, $7, $8, $9), ($10, $11, $12,
-      $13, $14, $15, $16, $17, $18)`,
+        $13, $14, $15, $16, $17, $18), ($19, $20,
+         $21, $22, $23, $24, $25, $26, $27)`,
       values: [
         stateFrom, stateTo, cityFrom, cityTo, price, departureDate,
         departureTime, pickupLocation, userId,
         stateFrom2, stateTo2, cityFrom2, cityTo2, price2,
         departureDate2, departureTime2, pickupLocation2, userId2,
+        stateFrom3, stateTo3, cityFrom3, cityTo3, price3,
+        departureDate3, departureTime3, pickupLocation3,
+        userId3,
       ],
     };
 

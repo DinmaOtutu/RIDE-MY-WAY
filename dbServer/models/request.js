@@ -5,6 +5,7 @@ export default (db, callback) => {
         accepted BOOLEAN DEFAULT null,
         ride_id INT references rides(id) on update cascade on delete set null,
         user_id INT references users(id) on update cascade on delete set null
+        deleted BOOLEAN default false,
       )`,
   };
 

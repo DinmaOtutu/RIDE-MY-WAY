@@ -4,9 +4,13 @@ export default (req, res, next) => {
   const query = {
     text: `select concat_ws(
       ' ', firstname, lastname
-    ) as driver_name, rides.*, cars.make as car_make,
+    ) as driver_name, rides.*, 
+        cars.make as car_make,
     cars.model as car_model from rides
-    inner join users on rides.user_id = users.id left outer join
+    inner join users 
+   on rides.user_id = users.id
+   and rides.deleted is not true 
+   left outer join
     cars on cars.id = users.car_id`,
   };
   db.query(query, (error, response) => {

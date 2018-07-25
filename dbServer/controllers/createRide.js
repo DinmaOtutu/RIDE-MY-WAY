@@ -30,8 +30,10 @@ export default [
     db.connect((error, client, done) => {
       if (error) return done(next(error));
       const query1 = {
-        text: `select * from rides where rides.departure_date = $1
-        and rides.departure_time = $2`,
+        text: `select * from rides 
+                where rides.departure_date = $1
+               and rides.departure_time = $2
+               and rides.deleted is not true`,
         values: [departureDate, departureTime],
       };
       return client.query(query1, (error1, response1) => {
@@ -47,7 +49,8 @@ export default [
           city_to, price, departure_date,
           departure_time, pickup_location, user_id
           ) 
-          values ($1, $2, $3, $4, $5, $6, $7, $8, $9) returning *`,
+          values ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+         returning *`,
           values: [
             stateFrom, cityFrom, stateTo,
             cityTo, price, departureDate,

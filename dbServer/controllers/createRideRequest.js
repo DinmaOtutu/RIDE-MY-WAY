@@ -13,10 +13,13 @@ export default (req, res, next) => {
   } = req;
 
   return db.connect((error, client, done) => {
-    if (error) return done(next(error));
+    if (error) return next(error);
     const query = {
-      text: `select * from rides where rides.id = $1 and
-      rides.user_id != $2 LIMIT 1`,
+      text: `select * from rides 
+      where rides.id = $1 and
+      rides.user_id != $2 
+      and rides.deleted is not true
+      LIMIT 1`,
       values: [rideId, id],
     };
 
@@ -28,19 +31,44 @@ export default (req, res, next) => {
         return done(next(errorNoRide));
       }
       const notUnique = {
-        text: `select * from requests where requests.ride_id = $1 and
+        text: `select * from requests 
+        where requests.ride_id = $1 and
         requests.user_id = $2`,
         values: [rideId, id],
       };
       return client.query(notUnique, (error3, response3) => {
         if (error3) return done(next(error3));
-        if (response3.rows.length) {
+
+        if (response3.rows.length && !response3.rows[0].deleted) {
           const errorNotUnique = Error(`Request exists for ride ${rideId}`);
           errorNotUnique.status = 409;
           return done(next(errorNotUnique));
         }
+
+        if (response3.rows.length && response3.rows[0].deleted) {
+          done();
+          const update = {
+            text: `update requests set
+            deleted = false where 
+            requests.user_id = $1
+            and requests.ride_id = $2
+            returning *`,
+            values: [id, rideId],
+          };
+
+          return client.query(update, (uErr, uRes) => {
+            done();
+            if (uErr) return next(uErr);
+            return res.status(201).send({
+              rideRequest: uRes.rows[0],
+            });
+          });
+        }
+
         const query2 = {
-          text: 'insert into requests (user_id, ride_id) values($1, $2) returning *',
+          text: `insert into requests 
+          (user_id, ride_id) 
+          values($1, $2) returning *`,
           values: [id, rideId],
         };
 

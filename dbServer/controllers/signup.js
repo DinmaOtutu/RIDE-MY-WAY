@@ -18,7 +18,9 @@ export default [
   encrypt.hash,
   (req, res, next) => {
     const notUnique = {
-      text: `select * from users where users.email = $1 or (users.firstname = $2
+      text: `select * from users 
+            where users.email = $1 
+           or (users.firstname = $2
       and users.lastname = $3)`,
       values: [req.body.email, req.body.firstname, req.body.lastname],
     };

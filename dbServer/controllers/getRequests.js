@@ -8,7 +8,9 @@ export default (req, res, next) => {
   return db.connect((error, client, done) => {
     if (error) return done(next(error));
     const ownsRide = {
-      text: 'select * from rides where rides.id = $1::int and rides.user_id = $2::int',
+      text: `select * from rides 
+    where rides.id = $1::int 
+     and rides.user_id = $2::int`,
       values: [rideId, userId],
     };
 
@@ -21,9 +23,15 @@ export default (req, res, next) => {
       }
       const query = {
         text: `select requests.*,
-        concat_ws(' ', users.firstname, users.lastname) as requested_by
-        from requests inner join users on users.id = requests.user_id and requests.ride_id = (
-          select rides.id from rides where rides.user_id = $1::int and rides.id = $2::int
+        concat_ws(
+                  ' ', users.firstname, users.lastname
+                  ) as requested_by from requests 
+                 inner join users 
+                 on users.id = requests.user_id 
+                  and requests.ride_id = (
+                    select rides.id from rides 
+                   where rides.user_id = $1::int 
+                   and rides.id = $2::int
         )`,
         values: [userId, rideId],
       };

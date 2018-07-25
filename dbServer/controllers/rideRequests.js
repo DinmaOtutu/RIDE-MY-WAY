@@ -9,18 +9,20 @@ export default (req, res, next) => {
     concat_ws(
       ' ', owners.firstname, owners.lastname
     ) as ride_owner, owners.id as owner_id,
-    requests.accepted,
+    requests.accepted, requests.deleted,
     requests.id, requests.user_id as
     requester_id, requests.ride_id,
     rides.state_from, rides.state_to,
     rides.city_from, rides.city_to,
     rides.price, rides.departure_date,
     rides.departure_time, rides.pickup_location,
+    rides.deleted as ride_deleted,
     cars.model as car_model,
     cars.make as car_make
     from requests
     inner join users on
     requests.user_id = users.id
+    and requests.deleted is not true
     inner join rides
     on requests.ride_id = rides.id
     inner join users as owners

@@ -1,9 +1,9 @@
-// display username
 const welcome = document.getElementById('js-welcome');
 const displayName = document.getElementById('js-user');
 const displayLetter = document.querySelector('.username-circle p');
 
 const user = JSON.parse(localStorage.getItem('user'));
+const { id: userId } = JSON.parse(localStorage.getItem('user'));
 
 const greeting = document.createTextNode(`Hello, ${user.firstname}`);
 displayName.textContent = user.firstname;
@@ -31,55 +31,58 @@ fetch(route, {
   .then(([data, res]) => {
     if (!res.ok) {
       // error status code handling
-      alert(JSON.stringify(data));
-    } else if (!data.requests.length) {
+      return alert(JSON.stringify(data));
+    }
+    return [...data.requests].filter(req => req.owner_id === userId
+        && !req.ride_deleted && !req.deleted);
+  })
+  .then((requests) => {
+    if (!requests || !requests.length) {
       const displayTable = document.querySelector('#js-order-details table');
       displayTable.innerHTML += `
-        <tr style="position:relative;">
-          <td style='font-size:30px;position:absolute;'>There have been no requests so far</td>
-        </tr>
-        `;
-    } else {
-      const { id: userId } = JSON.parse(localStorage.getItem('user'));
-      const copy = [...data.requests].filter(req => req.owner_id === userId);
+          <tr style="position:relative;">
+            <td style='font-size:30px;position:absolute;'>There have been no requests so far</td>
+          </tr>
+          `;
+    } else if (requests) {
       document.querySelector('#js-order-details table')
-        .innerHTML += copy.reduce((prev, req, index) => `
-        ${prev}<tr>
-        <td>${index + 1}</td>
-        <td>${req.requester}</td>
-        <td>${req.city_from}</td>
-        <td>${req.city_to}</td>
-        <td>${
+        .innerHTML += requests.reduce((prev, req, index) => `
+          ${prev}<tr>
+          <td>${index + 1}</td>
+          <td>${req.requester}</td>
+          <td>${req.city_from}</td>
+          <td>${req.city_to}</td>
+          <td>${
   common.toLocaleDateString({
     date: req.departure_date,
     time: req.departure_time,
   })
 }</td>
-        <td>
-          <span>
-            <select class="success table-select" ${
+          <td>
+            <span>
+              <select class="success table-select" ${
   ((status) => {
     switch (status) {
       case true: return `data-ids='${JSON.stringify({ id: req.id, rideId: req.ride_id })}'>
-                  <option class="success" value="pending" disabled>Pending</option>
-                  <option class="warning" value="accept" selected>Accept</option>
-                  <option class="danger" value="reject">Reject`;
+                    <option class="warning" value="pending" disabled>Pending</option>
+                    <option class="success" value="accept" selected>Accept</option>
+                    <option class="danger" value="reject">Reject`;
       case false: return `data-ids='${JSON.stringify({ id: req.id, rideId: req.ride_id })}'>
-                  <option class="success" value="pending" disabled>Pending</option>
-                  <option class="warning" value="accept">Accept</option>
-                  <option class="danger" value="reject" selected>Reject`;
+                    <option class="warning" value="pending" disabled>Pending</option>
+                    <option class="success" value="accept">Accept</option>
+                    <option class="danger" value="reject" selected>Reject`;
       default: return `data-ids='${JSON.stringify({ id: req.id, rideId: req.ride_id })}'>
-                  <option class="success" value="pending" selected>Pending</option>
-                  <option class="warning" value="accept">Accept</option>
-                  <option class="danger" value="reject">Reject`;
+                    <option class="warning" value="pending" selected>Pending</option>
+                    <option class="success" value="accept">Accept</option>
+                    <option class="danger" value="reject">Reject`;
     }
   })(req.accepted)
 }</option>
-            </select>
-          </span>
-        </td>
-      </tr>
-        `, '');
+              </select>
+            </span>
+          </td>
+        </tr>
+          `, '');
 
       const toggle = (evt) => {
         const { rideId, id: reqId } = JSON.parse(evt.target.getAttribute('data-ids'));
@@ -106,15 +109,18 @@ fetch(route, {
               const modal = document.getElementById('notif-modal');
               const modalHeader = modal.querySelector('.modal-header');
               modalHeader.innerHTML += `<p style='font-size:larger;color:green;'>
-                Successfully updated!, you can still make changes up 
-                until 6 hours before departure time
-                </p>
-              `;
+                  Successfully updated!, you can still make changes up 
+                  until 6 hours before departure time
+                  </p>
+                `;
               modal.style.setProperty('display', 'block');
               setTimeout(() => {
                 modal.style.setProperty('display', 'none');
                 modalHeader.removeChild(modalHeader.querySelector('p'));
               }, 1600);
+              // disable option "pending"
+              evt.target.querySelector('[value="pending"]')
+                .setAttribute('disabled', true);
             }
           });
       };
@@ -124,4 +130,5 @@ fetch(route, {
         stat.addEventListener('change', toggle);
       });
     }
-  });
+  })
+  .catch(error => common.errorHandler(error));

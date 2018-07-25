@@ -11,6 +11,8 @@ export default (db, callback) => {
         departure_time TIME not null,
         pickup_location VARCHAR not null,
         user_id INT references users(id) on update cascade on delete set null
+        deleted BOOLEAN default false,
+      unique(departure_date, departure_time, user_id)
       )`,
   };
 
