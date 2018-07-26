@@ -1,8 +1,7 @@
-// display user name
 const welcome = document.getElementById('js-welcome');
 const displayName = document.getElementById('js-user');
 const displayLetter = document.querySelector('.username-circle p');
-const modal1 = document.getElementById('notif-modal');
+const modal = document.getElementById('notif-modal');
 const dateInput = document.getElementById('departuredate');
 const timeInput = document.getElementById('departuretime');
 
@@ -79,10 +78,10 @@ const processNewRide = (evt) => {
         Ride successfully created!
         </p>
         `;
-      modal1.style.setProperty('display', 'block');
+      modal.style.setProperty('display', 'block');
       return setTimeout(() => {
         modalHeader.removeChild(modalHeader.querySelector('p'));
-        modal1.style.setProperty('display', 'none');
+        modal.style.setProperty('display', 'none');
       }, 2000);
     })
     .catch(error => common.errorHandler(error));
