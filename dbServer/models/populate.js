@@ -1,6 +1,6 @@
 import seeders from '../seeders';
 
-seeders.drop((error) => {
+seeders.populate((error) => {
     if (error) throw error;
-  console.log('dropped');
+  console.log('populated');
 });
