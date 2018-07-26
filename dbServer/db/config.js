@@ -12,6 +12,8 @@ databaseConfig.development = {
   port: process.env.DB_PORT,
 };
 
+databaseConfig.production = process.env.RIDE_MY_WAY_PROD;
+
 databaseConfig.test = {
   connectionString: process.env.RIDE_MY_WAY_TEST2,
 };

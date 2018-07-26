@@ -18,20 +18,64 @@ const processLogin = (evt) => {
     headers,
   })
     .then(res => Promise.all([res.json(), res]))
-    .then(([data, res]) => {
+    .then(([data]) => {
       if (data.user) {
         // logged in successfully, redirect
-        common.allow();
-        return common.store({
-          token: data.token, user: data.user,
+        Common.allow();
+        evt.target.removeEventListener(evt.type, processLogin);
+        return Common.store({
+          token: data.token,
+          user: data.user,
         });
       }
-      return alert(JSON.stringify(data));
+      const notifDiv = document.createElement('div');
+      notifDiv.setAttribute('id', 'notif-div');
+      notifDiv.style.setProperty('background', 'hsl(206, 21%, 94%)');
+      notifDiv.style.setProperty('color', '#ea0f0f');
+      notifDiv.style.setProperty('display', 'flex');
+      notifDiv.style.setProperty('font-size', '1.2em');
+      notifDiv.style.setProperty('flex-flow', 'row wrap');
+      notifDiv.style.setProperty('justify-content', 'center');
+      notifDiv.style.setProperty('font-weight', '600');
+      notifDiv.style.setProperty('border', '1px solid #c9c3c5');
+      notifDiv.style.setProperty('padding', '0 5px');
+
+      const notif = document.createElement('p');
+      notif.style.setProperty('margin', 'unset');
+      notif.style.setProperty('margin-top', 'auto');
+      notif.style.setProperty('margin-bottom', 'auto');
+
+      notif.textContent = data.message;
+
+      if (data.message.includes('email')) {
+        email.focus();
+        email.style.setProperty('background', '#fa2e2e73');
+        password.style.setProperty('background', 'initial');
+      }
+
+      if (data.message.includes('password')) {
+        password.focus();
+        password.style.setProperty('background', '#fa2e2e73');
+        email.style.setProperty('background', 'initial');
+      }
+
+      if (data.message.includes('Validation error')) {
+        notif.textContent = 'Email or Password format incorrect';
+        email.style.setProperty('background', 'initial');
+        password.style.setProperty('background', 'initial');
+      }
+
+      notifDiv.innerHTML = '';
+      notifDiv.appendChild(notif);
+
+      const parentDiv = document.getElementById('one');
+      const oldNotif = parentDiv.querySelector('#notif-div');
+      if (oldNotif) parentDiv.removeChild(oldNotif);
+      return parentDiv.prepend(notifDiv);
     })
     .catch((error) => {
       // no network or some other reason
-      common.errorHandler(error);
+      Common.errorHandler(error);
     });
 };
 loginForm.addEventListener('submit', processLogin);
-

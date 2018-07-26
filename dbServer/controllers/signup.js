@@ -11,7 +11,10 @@ export default [
       'password', 'email', 'firstname',
       'lastname', 'city', 'state', 'phone',
     );
-    req.validateBody('notEmptyString')('password', 'email', 'firstname', 'lastname', 'city', 'state', 'phone');
+    req.validateBody('notEmptyString')(
+      'password', 'email',
+      'firstname', 'lastname', 'city', 'state', 'phone'
+    );
     req.validateBody('type', 'password')(req.body.password);
     return req.sendErrors(next);
   },

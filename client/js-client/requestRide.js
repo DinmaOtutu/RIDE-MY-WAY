@@ -15,13 +15,13 @@ const requestRide = (rideId, checkRequest, remove) => async () => {
     .then(([data, res]) => {
       if (!res.ok) {
         // error status handling
-        return alert(JSON.stringify(data));
+        return alert(JSON.stringify(data));// eslint-disable-line
       }
       return data.requests
         .find(req => req.ride_id === +rideId
           && req.requester_id === userId);
     })
-    .catch(error => common.errorHandler(error));
+    .catch(error => Common.errorHandler(error));
 
   if (checkRequest && requested) {
     return true;
@@ -29,7 +29,7 @@ const requestRide = (rideId, checkRequest, remove) => async () => {
 
   // delete request
   if (requested && remove) {
-    if (confirm('Are you sure')) {
+    if (confirm('Are you sure')) { // eslint-disable-line
       const delRoute = `/api/v1/requests/${requested.id}`;
       return fetch(delRoute, {
         method: 'DELETE',
@@ -39,7 +39,7 @@ const requestRide = (rideId, checkRequest, remove) => async () => {
         .then(([data, res]) => {
           if (!res.ok) {
           // error status code handling
-            alert(JSON.stringify(data));
+            alert(JSON.stringify(data)); // eslint-disable-line
           } else {
           // success
             const message = document.getElementById('js-message');
@@ -59,7 +59,7 @@ const requestRide = (rideId, checkRequest, remove) => async () => {
 
   if (requested) {
     // error code handling here - say 409
-    return alert('You have already made a request for this ride');
+    return alert('You have already made a request for this ride'); // eslint-disable-line
   }
 
   return fetch(route, {
@@ -70,7 +70,7 @@ const requestRide = (rideId, checkRequest, remove) => async () => {
     .then(([data, res]) => {
       if (!res.ok) {
         // error status code handling
-        alert(JSON.stringify(data));
+        alert(JSON.stringify(data)); // eslint-disable-line
       } else {
         // success
         const message = document.getElementById('js-message');
@@ -84,5 +84,7 @@ const requestRide = (rideId, checkRequest, remove) => async () => {
         }, 2000);
       }
     })
-    .catch(error => common.errorHandler(error));
+    .catch(error => Common.errorHandler(error));
 };
+
+

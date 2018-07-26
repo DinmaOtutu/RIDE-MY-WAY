@@ -1,4 +1,4 @@
-class common {
+class Common {
   static store({
     token, user,
   }) {
@@ -6,8 +6,10 @@ class common {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  static errorHandler(error) {
-    alert(error.message);
+  static errorHandler(error, status) {
+    location.href = 'error.html';
+    sessionStorage.setItem('error', error.stack || error.serverError || error.message);
+    if (status) sessionStorage.setItem('status', status);
   }
 
   static allow() {
@@ -33,7 +35,7 @@ class common {
   static toLocaleDateString({
     date, time,
   }) {
-    return common.formatDate({ date, time })
+    return Common.formatDate({ date, time })
       .toLocaleDateString(undefined, {
         day: 'numeric',
         month: 'short',
@@ -45,9 +47,35 @@ class common {
 
   static isFrozen({ departure_time: departureTime, departure_date: departureDate }) {
     // cannot modify 6 hours before stipulated time
-    const date = common.formatDate({ date: departureDate, time: departureTime });
+    const date = Common.formatDate({ date: departureDate, time: departureTime });
     const interval = 6 * 3600 * 1000;
     if (date.valueOf() - Date.now() <= interval) return true;
     return false;
+  }
+
+  static redirect(evt) {
+    if (evt) evt.preventDefault();
+
+    const token = localStorage.getItem('token');
+    const url = new URL(location.href);
+    // param used by external pages eg error pages
+    const toRedirect = url.searchParams.get('red');
+    if (token) {
+      return fetch('/api/v1/rides', {
+        headers: new Headers({
+          'x-access-token': token,
+        }),
+        method: 'GET',
+      })
+        .then(res => res.ok)
+        .then((isAuth) => {
+          if (isAuth && !toRedirect) {
+            location.href = 'user-dashboard.html';
+            if (evt) evt.target.removeEventListener(evt.type, redirect);
+          } else { localStorage.clear(); }
+        });
+    }
+    location.href = 'login.html';
+    return localStorage.clear();
   }
 }

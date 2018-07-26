@@ -49,7 +49,7 @@ const remove = (evt) => {
           }, 2000);
         }
       })
-      .catch(error => common.errorHandler(error));
+      .catch(error => Common.errorHandler(error));
   }
 };
 
@@ -82,7 +82,7 @@ const processGetOffers = () => {
       offersWrapper.removeChild(offersWrapper.querySelector('progress'));
 
       const populator = async (ride, index) => {
-        const localeTime = common.toLocaleDateString({
+        const localeTime = Common.toLocaleDateString({
           date: ride.departure_date,
           time: ride.departure_time,
         });
@@ -94,7 +94,7 @@ const processGetOffers = () => {
           <button 
           ${
   +userId === +ride.user_id
-    ? common.isFrozen(ride)
+    ? Common.isFrozen(ride)
       ? 'class="btn btn-pri" disabled style="background-color:#848b85;border:1px #848b85;color:#585656;cursor:default;">remove'
       : 'class="btn btn-pri change" style="background-color:#cd6a52;border:#cd6a52;">remove'
     : 'class="btn btn-pri change">select'}</button>
@@ -104,7 +104,7 @@ const processGetOffers = () => {
             <a
             ${
   +userId === +ride.user_id
-    ? common.isFrozen(ride)
+    ? Common.isFrozen(ride)
       ? 'href="#">'
       : `data-delete='${JSON.stringify({ rideId: ride.id })}'>`
     : `href="./user-order-details.html?id=${ride.id}">`
@@ -129,7 +129,7 @@ const processGetOffers = () => {
       const delRides = document.querySelectorAll('[data-delete]');
       delRides.forEach(ride => ride.addEventListener('click', remove));
     })
-    .catch(error => common.errorHandler(error));
+    .catch(error => Common.errorHandler(error));
 };
 
 window.addEventListener('load', processGetOffers);
