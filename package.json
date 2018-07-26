@@ -11,6 +11,7 @@
     "test2": "npm run migrate && nyc mocha",
     "migrate": "node -r babel-register -r dotenv/config dbServer/models ",
     "dropall": "node -r babel-register -r dotenv/config dbServer/models/drop.js",
+    "populate": "node -r babel-register -r dotenv/config dbServer/models/populate.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
