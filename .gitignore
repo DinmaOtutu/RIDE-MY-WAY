@@ -60,3 +60,5 @@ typings/
 # vscode configuration
 .vscode/
 
+# dscode config
+.DS_Store
