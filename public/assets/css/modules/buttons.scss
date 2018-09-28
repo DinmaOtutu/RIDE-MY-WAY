@@ -1,0 +1,186 @@
+$color_1: #ffffff;
+$color_2: #FFFFFF;
+$color_3: #4CAF50;
+$color_4: #d50000;
+$color_5: #449d48;
+$font_family_1: "Nunito", sans-serif;
+$background_color_1: #449d48;
+$background_color_2: transparent;
+$background_color_3: #d50000;
+$background_color_4: #bc0000;
+$border_color_1: #449d48;
+$border_color_2: #4CAF50;
+$border_color_3: #bc0000;
+$border_color_4: #d50000;
+
+.btn {
+	border-radius: 3px;
+	border-style: none;
+	padding: 10px 40px;
+	font-family: $font_family_1;
+	font-size: 17px;
+	font-weight: bold;
+	position: relative;
+	overflow: hidden;
+	outline: none;
+	margin: 0px 5px 4px;
+	box-shadow: 2px 2px #1b5e20;
+	cursor: pointer;
+	&:hover {
+		outline: none;
+		cursor: pointer;
+	}
+}
+#display {
+	margin: auto;
+	width: 20%;
+	padding: 10px;
+	color: $color_1;
+	text-align: center;
+	height: 100%;
+	display: none;
+	font-size: 2vw;
+}
+.btn.focus {
+	outline: none;
+	cursor: pointer;
+}
+.btn.active {
+	outline: none;
+	cursor: pointer;
+}
+.btn-block {
+	width: 100%;
+}
+.btn-pri {
+	border: 2px solid #449d48;
+	background-color: $background_color_1;
+	color: $color_2;
+	&:hover {
+		transition: background-color 0.5s, border-color 0.5s;
+		background-color: $background_color_1;
+		border-color: $border_color_1;
+		color: $color_2;
+	}
+}
+.btn-pri.focus {
+	transition: background-color 0.5s, border-color 0.5s;
+	background-color: $background_color_1;
+	border-color: $border_color_1;
+	color: $color_2;
+}
+.btn-pri.active {
+	transition: background-color 0.5s, border-color 0.5s;
+	background-color: $background_color_1;
+	border-color: $border_color_1;
+	color: $color_2;
+}
+.btn-sec {
+	border: 2px solid #4CAF50;
+	background-color: $background_color_2;
+	color: $color_3;
+	border-color: $border_color_2;
+	&:hover {
+		transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+		background-color: $background_color_1;
+		border-color: $border_color_1;
+		color: $color_1;
+	}
+}
+.btn-sec.focus {
+	transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+	background-color: $background_color_1;
+	border-color: $border_color_1;
+	color: $color_1;
+}
+.btn-sec.active {
+	transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+	background-color: $background_color_1;
+	border-color: $border_color_1;
+	color: $color_1;
+}
+.btn-pri-danger {
+	border: 2px solid #d50000;
+	background-color: $background_color_3;
+	color: $color_2;
+	&:hover {
+		transition: background-color 0.5s, border-color 0.5s;
+		background-color: $background_color_4;
+		border-color: $border_color_3;
+		color: $color_2;
+	}
+}
+.btn-pri-danger.focus {
+	transition: background-color 0.5s, border-color 0.5s;
+	background-color: $background_color_4;
+	border-color: $border_color_3;
+	color: $color_2;
+}
+.btn-pri-danger.active {
+	transition: background-color 0.5s, border-color 0.5s;
+	background-color: $background_color_4;
+	border-color: $border_color_3;
+	color: $color_2;
+}
+.btn-sec-danger {
+	border: 2px solid #d50000;
+	background-color: $background_color_2;
+	color: $color_4;
+	border-color: $border_color_4;
+	&:hover {
+		transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+		background-color: $background_color_4;
+		border-color: $border_color_3;
+		color: $color_1;
+	}
+}
+.btn-sec-danger.focus {
+	transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+	background-color: $background_color_4;
+	border-color: $border_color_3;
+	color: $color_1;
+}
+.btn-sec-danger.active {
+	transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+	background-color: $background_color_4;
+	border-color: $border_color_3;
+	color: $color_1;
+}
+.control-btns {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+@media (max-width: 768px) {
+	.control-btns {
+		.btn {
+			border: 0;
+			padding: 15px 0 0 0;
+			font-size: 1em;
+		}
+	}
+}
+@media (max-width: 600px) {
+	.control-btns {
+		.btn {
+			border: 0;
+			padding: 10px 0 0 0;
+			font-size: 0.9em;
+			&:hover {
+				background-color: $background_color_2;
+				border: 0;
+				color: $color_5;
+			}
+			&:focus {
+				background-color: $background_color_2;
+				border: 0;
+				color: $color_5;
+			}
+			&:active {
+				background-color: $background_color_2;
+				border: 0;
+				color: $color_5;
+			}
+		}
+	}
+}

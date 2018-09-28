@@ -1,0 +1,43 @@
+$color_1: rgb(20, 20, 20);
+$background_color_1: lightgray;
+
+table {
+	margin: auto;
+	border-collapse: collapse;
+	overflow-x: auto;
+	display: block;
+	width: fit-content;
+	max-width: 100%;
+	height: 100%;
+	box-shadow: 0 0 1px 1px rgba(0, 0, 0, .1);
+}
+td {
+	border: solid rgb(200, 200, 200) 1px;
+	padding: 1.1rem;
+	white-space: nowrap;
+	border-bottom: none;
+	color: $color_1;
+	&:first-of-type {
+		border-left: none;
+	}
+	&:last-of-type {
+		border-right: none;
+	}
+}
+th {
+	border: solid rgb(200, 200, 200) 1px;
+	padding: 1.1rem;
+	text-align: center;
+	background-color: $background_color_1;
+	text-transform: uppercase;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: rgb(50, 50, 100) solid 2px;
+	border-top: none;
+	&:first-of-type {
+		border-left: none;
+	}
+	&:last-of-type {
+		border-right: none;
+	}
+}
