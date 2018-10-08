@@ -48,18 +48,19 @@ $border_color_1: #154a19;
 html {
 	margin: 0;
 	height: 100%;
+	width: 100%;
 	font-weight: 400;
 	font-family: $font_family_1;
-	margin: 2.5%;
+	// margin: 2.5%;
 	font-size: 16px;
 }
 body {
 	height: 100%;
 }
 #root {
-	margin: 0;
-	display: flex;
-	min-height: 100%;
+  margin: 0;
+  display: flex;
+	height: 100%;
 	flex-direction: column;
 	color: $color_1;
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("./images/bg.jpeg") no-repeat center center;

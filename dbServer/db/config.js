@@ -16,6 +16,11 @@ databaseConfig.test = {
   connectionString: process.env.RIDE_MY_WAY_TEST2,
 };
 
+databaseConfig.prod = {
+  connectionString: process.env.RIDE_MY_WAY_PROD,
+};
+
+
 // {
 //     "development": {
 //         "user": process.env

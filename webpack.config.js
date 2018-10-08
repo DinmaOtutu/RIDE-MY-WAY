@@ -1,5 +1,9 @@
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
+require('dotenv').config({ path: `${__dirname}/.env` });
 
+// process.env.SERVER_URL
 module.exports = {
   mode: 'development',
   entry: './public/Index.jsx',
@@ -23,14 +27,14 @@ module.exports = {
           loader: 'css-loader',
         }, {
           loader: 'sass-loader',
-          // options: {
-          //   includePaths: ['absolute/path/a', 'absolute/path/b'],
-          // },
         }],
       },
       {
-        test: /\.svg|.png|.jpeg|.jpg$/,
+        test: /\.(svg|png|jpeg|jpg)$/,
         loader: 'url-loader',
+        options: {
+          limit: 8000,
+        },
       },
     ],
   },
@@ -38,6 +42,13 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process': {
+        'env': {
+          'SERVER_URL': JSON.stringify(process.env.SERVER_URL),
+      }
+     }
     }),
   ],
   resolve: {
