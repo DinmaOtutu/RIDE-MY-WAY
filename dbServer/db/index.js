@@ -9,8 +9,8 @@ let db;
 if (env === 'test') {
   // Add test config
   db = new Pool(databaseConfig.test);
-} else {
-  db = new Pool(databaseConfig.development);
+} else if(env === 'dev' ) {
+  db = new Pool(databaseConfig.prod);
 }
 
 export default db;

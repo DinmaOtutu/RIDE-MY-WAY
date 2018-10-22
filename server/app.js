@@ -26,10 +26,13 @@ app.get('/', (req, res) => {
   res.redirect(`api/${process.env.VERSION}`);
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/index.html'));
+// });
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 // Handling 404
 app.use((req, res) => {

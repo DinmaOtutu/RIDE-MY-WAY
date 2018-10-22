@@ -1,0 +1,16 @@
+$color_1: #FFFFFF;
+$background_color_1: #4CAF50;
+
+.username-circle {
+	width: 100px;
+	height: 50px;
+	border-radius: 50%;
+	color: $color_1;
+	background-color: $background_color_1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	p {
+		font-size: 1.0em;
+	}
+}

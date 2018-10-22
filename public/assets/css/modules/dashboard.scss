@@ -1,0 +1,63 @@
+$color_1: white;
+$color_2: #E32429;
+$background_color_1: #4CAF50;
+
+.dashboard {
+	.box-group.summary {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
+	}
+	.summary {
+		.total-sum {
+			font-size: 1.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: $background_color_1;
+			color: $color_1;
+			.count {
+				font-size: 1.2em;
+			}
+		}
+		.total-cash {
+			font-size: 1.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: $background_color_1;
+			.count {
+				font-size: 1.2em;
+			}
+		}
+		.pending {
+			font-size: 1.5em;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			background-color: $background_color_1;
+			color: $color_2;
+			.count {
+				font-size: 1.2em;
+			}
+		}
+	}
+	.summary.box-group {
+		.box {
+			max-height: 80px;
+			text-align: center;
+			padding: 10px;
+		}
+	}
+	.order-details {
+		margin-top: -30px;
+		padding: 0 40px;
+	}
+	.order-history {
+		margin-top: 0;
+	}
+}

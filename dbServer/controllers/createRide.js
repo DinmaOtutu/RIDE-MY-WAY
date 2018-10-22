@@ -62,6 +62,7 @@ export default [
           if (error2) return next(error2);
           return res.status(201).send({
             ride: response2.rows[0],
+            message: 'You have successfully created a ride',
           });
         });
       });

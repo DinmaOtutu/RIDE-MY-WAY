@@ -1,0 +1,165 @@
+$color_1: #343a40;
+$color_2: darkgray;
+$color_3: #333;
+$color_4: #FFFFFF;
+$color_5: #d50000;
+$color_6: #989ea2;
+$color_7: #4CAF50;
+$color_8: #449d48;
+$font_family_1: Roboto, "Helvetica Neue", Arial, sans-serif;
+$background_color_1: inherit;
+$background_color_2: rgba(0, 0, 0, 0.5);
+$background_color_3: transparent;
+$border_color_1: red;
+
+form {
+	padding: 30px 0 10px;
+	label {
+		color: $color_1;
+		font-weight: 250;
+		font-size: 1.2em;
+	}
+}
+.form-input-checkbox {
+	margin-bottom: 30px;
+}
+.form-input {
+	color: $color_2;
+	display: flex;
+	margin-bottom: 30px;
+	flex-direction: column;
+	input {
+		&:not([type="checkbox"]) {
+			border: 0;
+			color: $color_3;
+			font-size: 1em;
+			border-bottom: 1px solid darkgray;
+			background-color: $background_color_1;
+			height: 30px;
+			outline: none;
+			&:focus {
+				height: 30px;
+				outline: none;
+				transition: height 0.3s;
+			}
+			&:active {
+				height: 30px;
+				outline: none;
+				transition: height 0.3s;
+			}
+			&:not([value=""]) {
+				height: 30px;
+				outline: none;
+				transition: height 0.3s;
+			}
+		}
+		&:not([type="checkbox"])[value=""] {
+			height: 17px;
+			transition: height 0.3s;
+		}
+		&:not([type="checkbox"]).invalid {
+			border-color: $border_color_1;
+		}
+	}
+	textarea {
+		font-size: 1em;
+		border-radius: 3px;
+		font-family: $font_family_1;
+		border: 1px solid darkgray;
+		background-color: $background_color_3;
+		outline: none;
+		margin-top: 12px;
+		&:focus {
+			outline: none;
+		}
+	}
+}
+.form-input.form-img-input {
+	width: 100%;
+	height: 250px;
+	cursor: pointer;
+	position: relative;
+	.img-overlay {
+		opacity: 0;
+		top: -1px;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		cursor: pointer;
+		position: absolute;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		text-decoration: none;
+		background-color: $background_color_2;
+		p {
+			color: $color_4;
+			font-size: 1.5em;
+		}
+		p.danger {
+			color: $color_5;
+		}
+	}
+	input[type=file] {
+		display: none;
+		border-bottom: 0px solid darkgray;
+	}
+	img {
+		width: 100%;
+		height: 250px;
+	}
+	&:hover {
+		.img-overlay {
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
+	}
+	&:focus {
+		.img-overlay {
+			opacity: 1;
+			transition: opacity 0.5s;
+		}
+	}
+}
+.input-info {
+	font-size: 0.75em;
+	color: $color_6;
+}
+.form-extra-info {
+	a {
+		color: $color_7;
+		&:hover {
+			color: $color_8;
+			transition: color 0.5s;
+		}
+		&:focus {
+			color: $color_8;
+			transition: color 0.5s;
+		}
+		&:active {
+			color: $color_8;
+			transition: color 0.5s;
+		}
+	}
+}
+select {
+	padding: 0.3em;
+	outline: none;
+	border: 0;
+	padding-left: 0em;
+	background-color: $background_color_1;
+}
+select.ryde-options {
+	overflow-y: auto;
+}
+option {
+	outline: none;
+	padding-left: 0em;
+}
+.order-input {
+	width: 25px;
+	outline: none;
+	border: none;
+	background-color: $background_color_1;
+}
